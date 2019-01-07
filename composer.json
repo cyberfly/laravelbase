@@ -16,6 +16,7 @@
         "spatie/laravel-html": "^2.19",
         "spatie/laravel-medialibrary": "^7.0.0",
         "spatie/laravel-model-status": "^1.6",
+        "spatie/laravel-sluggable": "^2.1",
         "yajra/laravel-datatables-oracle": "~8.0"
     },
     "require-dev": {
