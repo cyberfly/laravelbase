@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <title>Dashmix - Bootstrap 4 Admin Template &amp; UI Framework</title>
+        <title>{{ config('app.name', 'Laravel') }}</title>
 
         <meta name="description" content="Dashmix - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
         <meta name="author" content="pixelcave">
@@ -146,7 +146,7 @@
                                 <span class="text-white-75">D</span><span class="text-white">x</span>
                             </span>
                             <span class="smini-hidden">
-                                <span class="text-white-75">Dash</span><span class="text-white">mix</span>
+                                <span class="text-white-75">{{ config('app.name', 'Laravel') }}
                             </span>
                         </a>
                         <!-- END Logo -->
@@ -271,9 +271,15 @@
                                     <!-- END Side Overlay -->
 
                                     <div role="separator" class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="javascript:void(0)">
-                                        <i class="far fa-fw fa-arrow-alt-circle-left mr-1"></i> Sign Out
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        <i class="far fa-fw fa-arrow-alt-circle-left mr-1"></i> {{ __('Logout') }}
                                     </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -409,10 +415,10 @@
                 <div class="content py-0">
                     <div class="row font-size-sm">
                         <div class="col-sm-6 order-sm-2 mb-1 mb-sm-0 text-center text-sm-right">
-                            Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="https://goo.gl/vNS3I" target="_blank">pixelcave</a>
+                            Crafted with <i class="fa fa-heart text-danger"></i> by <a class="font-w600" href="https://nazrol.tech" target="_blank">Nazrol Tech Sdn Bhd</a>
                         </div>
                         <div class="col-sm-6 order-sm-1 text-center text-sm-left">
-                            <a class="font-w600" href="https://goo.gl/mDBqx1" target="_blank">Dashmix</a> &copy; <span data-toggle="year-copy">2018</span>
+                            <a class="font-w600" href="https://goo.gl/mDBqx1" target="_blank">{{ config('app.name', 'Laravel') }}</a> &copy; <span data-toggle="year-copy">2018</span>
                         </div>
                     </div>
                 </div>
