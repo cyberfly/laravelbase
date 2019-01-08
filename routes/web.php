@@ -18,3 +18,7 @@ Route::match(['get', 'post'], '/dashboard', function(){
 });
 Route::view('/examples/plugin', 'examples.plugin');
 Route::view('/examples/blank', 'examples.blank');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
