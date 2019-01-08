@@ -29,6 +29,10 @@
 
         <!-- Scripts -->
         <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
+
+        <!-- Ziggy Laravel routes -->
+        @routes
+
     </head>
     <body>
         <!-- Page Container -->
