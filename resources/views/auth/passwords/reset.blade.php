@@ -71,7 +71,7 @@
                         @endif
                     </div>
                 </div>
-                  <div class="form-group text-center">
+                  <div class="form-group text-center mt-4">
                     <button type="submit" class="btn btn-hero-primary">
                         <i class="fa fa-fw fa-paper-plane mr-1"></i> Reset Password
                     </button>
