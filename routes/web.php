@@ -11,14 +11,23 @@
 |
 */
 
+Route::get('/', 'Dashboard')->middleware('auth');
+
 // Example Routes
-Route::view('/', 'landing');
-Route::match(['get', 'post'], '/dashboard', function(){
-    return view('dashboard');
-});
 Route::view('/examples/plugin', 'examples.plugin');
 Route::view('/examples/blank', 'examples.blank');
+
+// Laravel Auth routes
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Base routes
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('dashboard', 'Dashboard')->name('dashboard');
+
+});
+
