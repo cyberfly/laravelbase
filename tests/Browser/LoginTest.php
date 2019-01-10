@@ -14,15 +14,6 @@ class LoginTest extends DuskTestCase
      *
      * @return void
      */
-    
-
-    public function testViewLogin()
-    {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/login')
-                    ->assertSee('SIGN IN');
-        });
-    }
 
     public function testLogin()
     {
@@ -38,6 +29,14 @@ class LoginTest extends DuskTestCase
                 ->logout()
                 ->visit('/login')
                 ->assertSee('SIGN IN');    
+        });
+    }
+
+    public function testViewLogin()
+    {
+        $this->browse(function (Browser $browser) {
+            $browser->visit('/login')
+                    ->assertSee('SIGN IN');
         });
     }
 }
