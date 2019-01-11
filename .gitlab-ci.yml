@@ -26,28 +26,28 @@ test:
 staging:
   stage: staging
   script:
-    - cd /home/nt/staging/frontend
-    - sudo git pull http://$GIT_USER:$GIT_PASSWORD@runner02.nazrol.tech/root/frontend.git
+    - cd /home/gitlab-runner/staging
+    - sudo git pull http://ridzuan:$GITPULLPASS@runner02.nazrol.tech/root/frontend.git
     - sudo chown www-data.www-data -R *
     - sudo service nginx restart
   environment:
     name: staging
-    url: http://frontend.staging.net
+    url: http://ppz.nazrol.tech
   only:
     - master
   tags:
 
-production:
-  stage: production
-  script:
-    - cd /home/nt/live/frontend
-    - sudo git pull http://$GIT_USER:$GIT_PASSWORD@runner02.nazrol.tech/root/frontend.git
-    - sudo chown www-data.www-data -R *
-    - sudo service nginx restart
-  environment:
-    name: production
-    url: http://frontend.live.net
-  when: manual
-  only:
-    - master
-  tags:
+# production:
+#   stage: production
+#   script:
+#     - cd /home/nt/live/frontend
+#     - sudo git pull http://$GIT_USER:$GIT_PASSWORD@runner02.nazrol.tech/root/frontend.git
+#     - sudo chown www-data.www-data -R *
+#     - sudo service nginx restart
+#   environment:
+#     name: production
+#     url: http://frontend.live.net
+#   when: manual
+#   only:
+#     - master
+#   tags:
