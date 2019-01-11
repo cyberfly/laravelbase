@@ -1,0 +1,53 @@
+stages:
+  - build
+  - test
+  - staging
+  - production
+
+build:
+  stage: build
+  script:
+    - echo Build my page
+  artifacts:
+    paths:
+    expire_in:
+  tags:
+
+test:
+  stage: test
+  script:
+    - echo this is an empty test
+  only:
+    - branches
+  except:
+    - master
+  tags:
+
+staging:
+  stage: staging
+  script:
+    - cd /home/nt/staging/frontend
+    - sudo git pull http://$GIT_USER:$GIT_PASSWORD@runner02.nazrol.tech/root/frontend.git
+    - sudo chown www-data.www-data -R *
+    - sudo service nginx restart
+  environment:
+    name: staging
+    url: http://frontend.staging.net
+  only:
+    - master
+  tags:
+
+production:
+  stage: production
+  script:
+    - cd /home/nt/live/frontend
+    - sudo git pull http://$GIT_USER:$GIT_PASSWORD@runner02.nazrol.tech/root/frontend.git
+    - sudo chown www-data.www-data -R *
+    - sudo service nginx restart
+  environment:
+    name: production
+    url: http://frontend.live.net
+  when: manual
+  only:
+    - master
+  tags:
