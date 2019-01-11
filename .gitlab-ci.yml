@@ -1,33 +1,27 @@
 stages:
-  - build
   - test
   - staging
 #   - production
 
-build:
-  stage: build
-  script:
-    - echo Build my page
-  artifacts:
-    paths:
-    expire_in:
-  tags:
-
 test:
   stage: test
   script:
-    - echo this is an empty test
+    - cd /home/gitlab-runner/test
+    - sudo git pull http://ridzuan:$GITPULLPASS@srv.nazrol.tech
+    - php artisan migrate
+    - vendor/bin/phpunit
   only:
     - branches
   except:
     - master
   tags:
+    - test
 
 staging:
   stage: staging
   script:
     - cd /home/gitlab-runner/staging
-    - sudo git pull http://ridzuan:$GITPULLPASS@runner02.nazrol.tech/root/frontend.git
+    - sudo git pull http://ridzuan:$GITPULLPASS@srv.nazrol.tech
     - sudo chown www-data.www-data -R *
     - sudo service nginx restart
   environment:
@@ -36,6 +30,7 @@ staging:
   only:
     - master
   tags:
+    - staging
 
 # production:
 #   stage: production
