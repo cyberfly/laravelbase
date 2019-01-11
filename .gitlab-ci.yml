@@ -10,10 +10,10 @@ test:
     - git pull http://$GITUSER:$GITPULLPASS@srv.nazrol.tech/internal/laravel-base/
     - php artisan migrate
     - vendor/bin/phpunit
-  only:
-    - branches
-  except:
-    - master
+#   only:
+#     - branches
+#   except:
+#     - master
   tags:
     - test
 
