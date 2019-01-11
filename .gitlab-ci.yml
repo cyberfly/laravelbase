@@ -7,7 +7,7 @@ test:
   stage: test
   script:
     - cd /home/gitlab-runner/test
-    - sudo git pull http://ridzuan:$GITPULLPASS@srv.nazrol.tech
+    - git pull http://ridzuan:$GITPULLPASS@srv.nazrol.tech
     - php artisan migrate
     - vendor/bin/phpunit
   only:
@@ -21,7 +21,7 @@ staging:
   stage: staging
   script:
     - cd /home/gitlab-runner/staging
-    - sudo git pull http://$GITUSER:$GITPULLPASS@srv.nazrol.tech
+    - git pull http://$GITUSER:$GITPULLPASS@srv.nazrol.tech/internal/laravel-base
     - sudo chown www-data.www-data -R *
     - sudo service nginx restart
   environment:
