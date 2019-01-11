@@ -21,7 +21,7 @@ staging:
   stage: staging
   script:
     - cd /home/gitlab-runner/staging
-    - sudo git pull http://ridzuan:$GITPULLPASS@srv.nazrol.tech
+    - sudo git pull http://$GITUSER:$GITPULLPASS@srv.nazrol.tech
     - sudo chown www-data.www-data -R *
     - sudo service nginx restart
   environment:
