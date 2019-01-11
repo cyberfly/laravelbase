@@ -6,8 +6,9 @@ stages:
 test:
   stage: test
   script:
-    - cd /home/gitlab-runner/test
-    - git pull http://$GITUSER:$GITPULLPASS@srv.nazrol.tech/internal/laravel-base/
+    - cp .env.example .env
+    - composer install
+    - php artisan key:generate
     - php artisan migrate
     - vendor/bin/phpunit
 #   only:
