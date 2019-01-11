@@ -7,7 +7,7 @@ test:
   stage: test
   script:
     - cd /home/gitlab-runner/test
-    - git pull http://ridzuan:$GITPULLPASS@srv.nazrol.tech
+    - git pull http://$GITUSER:$GITPULLPASS@srv.nazrol.tech
     - php artisan migrate
     - vendor/bin/phpunit
   only:
