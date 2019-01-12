@@ -1,0 +1,49 @@
+stages:
+  - test
+  - staging
+#   - production
+
+test:
+  stage: test
+  script:
+    - cp .env.example .env
+    - composer install
+    - php artisan key:generate
+    - php artisan migrate:fresh --seed
+    - vendor/bin/phpunit
+#   only:
+#     - branches
+#   except:
+#     - master
+  tags:
+    - test
+
+staging:
+  stage: staging
+  script:
+    - cd /home/gitlab-runner/staging
+    - git pull http://$GITUSER:$GITPULLPASS@srv.nazrol.tech/internal/laravel-base/
+    - sudo chown www-data.www-data -R *
+    - sudo service nginx restart
+  environment:
+    name: staging
+    url: http://ppz.nazrol.tech
+  only:
+    - master
+  tags:
+    - staging
+
+# production:
+#   stage: production
+#   script:
+#     - cd /home/nt/live/frontend
+#     - sudo git pull http://$GIT_USER:$GIT_PASSWORD@runner02.nazrol.tech/root/frontend.git
+#     - sudo chown www-data.www-data -R *
+#     - sudo service nginx restart
+#   environment:
+#     name: production
+#     url: http://frontend.live.net
+#   when: manual
+#   only:
+#     - master
+#   tags:
