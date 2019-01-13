@@ -202,6 +202,21 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-main-heading">Administrator</li>
+                        <li class="nav-main-item">
+                            <a class="nav-main-link" href="{{ route('admin.users.index') }}">
+                                <i class="nav-main-link-icon si si-users"></i>
+                                <span class="nav-main-link-name">Users</span>
+                            </a>
+                            <a class="nav-main-link" href="#">
+                                <i class="nav-main-link-icon si si-user"></i>
+                                <span class="nav-main-link-name">Roles</span>
+                            </a>
+                            <a class="nav-main-link" href="#">
+                                <i class="nav-main-link-icon si si-key"></i>
+                                <span class="nav-main-link-name">Permissions</span>
+                            </a>
+                        </li>
                         <li class="nav-main-heading">More</li>
                         <li class="nav-main-item">
                             <a class="nav-main-link" href="/">
