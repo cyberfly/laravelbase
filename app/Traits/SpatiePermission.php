@@ -8,6 +8,6 @@ trait SpatiePermission
 
     public function scopeFirstByName($query, $name)
     {
-        return $query->whereName($name)->whereGuardName($this->guard_name)->first();
+        return $query->whereName($name)->whereGuardName($this->guard_name);
     }
 }
