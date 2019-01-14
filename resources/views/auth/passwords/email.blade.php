@@ -14,7 +14,7 @@
             <!-- Header -->
             <div class="mb-2 text-center">
                 <a class="link-fx font-w700 font-size-h1" href="index.html">
-                    <span class="text-dark">Dash</span><span class="text-primary">mix</span>
+                    <span class="text-dark">Laravel</span><span class="text-primary">Base</span>
                 </a>
                 <p class="text-uppercase font-w700 font-size-sm text-muted">Password Reminder</p>
             </div>
@@ -45,7 +45,7 @@
                     </button>
                 </div>
                 <div class="form-group text-center">
-                    <a class="btn btn-hero-secondary pl-6 pr-6" href="{{ route('home') }}">
+                    <a class="btn btn-hero-secondary pl-6 pr-6" href="{{ route('dashboard') }}">
                         <i class="fa fa-fw fa-reply mr-1"></i> Login
                     </a>
                 </div>
