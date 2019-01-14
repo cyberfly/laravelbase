@@ -21,8 +21,6 @@ Route::view('/examples/blank', 'examples.blank');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 // Base routes
 
 Route::middleware('auth')->group(function () {
