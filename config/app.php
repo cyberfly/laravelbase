@@ -176,6 +176,13 @@ return [
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+
+        /*
+         * Macros Service Providers...
+         */
+
+        \App\Providers\BuilderServiceProvider::class
+
     ],
 
     /*
