@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4602c0e9d067bca04bb8804560a4ba7a",
+    "content-hash": "c214b4db72db4fabb3550c6ebfbbacf6",
     "packages": [
         {
             "name": "anahkiasen/underscore-php",
@@ -166,6 +166,48 @@
                 "pdf"
             ],
             "time": "2018-08-31T13:25:44+00:00"
+        },
+        {
+            "name": "calebporzio/laravel-helpers-file",
+            "version": "v0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/calebporzio/laravel-helpers-file.git",
+                "reference": "568d13ed365b050741b43aa85d1b8b71b9de7053"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/calebporzio/laravel-helpers-file/zipball/568d13ed365b050741b43aa85d1b8b71b9de7053",
+                "reference": "568d13ed365b050741b43aa85d1b8b71b9de7053",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^5.7"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "CalebPorzio\\LaravelHelpersFile\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "CalebPorzio\\LaravelHelpersFile\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio"
+                }
+            ],
+            "description": "Because I can never remember exactly how to autoload my helpers.php file",
+            "time": "2018-11-12T22:12:27+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
