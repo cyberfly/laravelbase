@@ -1012,9 +1012,11 @@ window.Vue = __webpack_require__(38);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#page-container'
+/*
+const app = new Vue({
+    el: '#page-container'
 });
+*/
 
 /***/ }),
 /* 16 */
