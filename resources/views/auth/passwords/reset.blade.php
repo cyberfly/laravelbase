@@ -13,8 +13,8 @@
         <div class="block-content block-content-full px-lg-5 px-xl-6 py-4 py-md-5 py-lg-6 bg-white">
             <!-- Header -->
             <div class="mb-2 text-center">
-                <a class="link-fx font-w700 font-size-h1" href="index.html">
-                    <span class="text-dark">Dash</span><span class="text-primary">mix</span>
+                <a class="link-fx font-w700 font-size-h1" href="/">
+                    <span class="text-dark">{{ config('app.name') }}</span>
                 </a>
                 <p class="text-uppercase font-w700 font-size-sm text-muted">Password reset</p>
             </div>
