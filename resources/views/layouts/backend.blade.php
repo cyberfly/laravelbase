@@ -6,8 +6,8 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <meta name="description" content="Dashmix - Bootstrap 4 Admin Template &amp; UI Framework created by pixelcave and published on Themeforest">
-        <meta name="author" content="pixelcave">
+        <meta name="description" content="Laravel Base - Project starter">
+        <meta name="author" content="nazroltech">
         <meta name="robots" content="noindex, nofollow">
 
         <!-- CSRF Token -->
