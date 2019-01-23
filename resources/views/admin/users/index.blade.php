@@ -44,6 +44,16 @@
                     </ol>
                 </nav>
             </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
+                <div class="form-group">
+                    <div class="input-group">
+                        <a class="btn btn-icon btn-primary" href="{{ route('admin.users.create') }}" style="width:100%">
+                            <span class="btn-inner--icon"><i class="fa fa-plus"></i></span>
+                            <span class="btn-inner--text">Add New</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- END Hero -->
