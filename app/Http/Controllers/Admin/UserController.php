@@ -4,12 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Resources\Admin\UserResource;
+use App\Models\SpatiePermission\WebRole;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
+    protected $user;
+    protected $role;
+
+    public function __construct(User $user, WebRole $role)
+    {
+        $this->user = $user;
+        $this->role = $role;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,18 +41,43 @@ class UserController extends Controller
      */
     public function create()
     {
+        $roles = $this->role->all();
 
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param StoreUserRequest|Request $request
+     * @return UserResource
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ];
+
+        $user = $this->user->create($data);
+
+        // assign roles
+
+        if ($request->filled('roles')) {
+
+            foreach ($request->roles as $role_id) {
+
+                $role = $this->role->find($role_id);
+
+                if ($role) {
+                    $user->assignRole($role);
+                }
+            }
+
+        }
+
+        return new UserResource($user->load('roles'));
     }
 
     /**
