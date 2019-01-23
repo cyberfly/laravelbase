@@ -1029,6 +1029,7 @@ Vue.component('create-user-component', __webpack_require__(49));
  Common Components here
  */
 
+Vue.component('v-text', __webpack_require__(79));
 /*
  End of Common Components
  */
@@ -40149,6 +40150,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['roles'],
   mounted: function mounted() {
@@ -40256,6 +40266,28 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "row push" }, [
         _c("div", { staticClass: "col-lg-6" }, [
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c("v-text", {
+                attrs: {
+                  field_name: "kuba",
+                  label: "Kuba Rabik",
+                  rules: "required|email"
+                },
+                model: {
+                  value: _vm.user.coupon,
+                  callback: function($$v) {
+                    _vm.$set(_vm.user, "coupon", $$v)
+                  },
+                  expression: "user.coupon"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
             _vm._m(1),
             _vm._v(" "),
@@ -40602,6 +40634,191 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(50)
+/* script */
+var __vue_script__ = __webpack_require__(80)
+/* template */
+var __vue_template__ = __webpack_require__(81)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/components/common/forms/InputTextComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c45152ee", Component.options)
+  } else {
+    hotAPI.reload("data-v-c45152ee", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 80 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  inject: ['$validator'],
+  props: {
+    value: {},
+    field_name: {
+      required: true
+    },
+    label: {
+      required: true
+    },
+    placeholder: {
+      default: ''
+    },
+    id: {
+      default: this.field_name
+    },
+    rules: {
+      default: '',
+      type: String
+    }
+  },
+  mounted: function mounted() {},
+  computed: {
+    isRequired: function isRequired() {
+      if (!this.rules) {
+        return false;
+      }
+
+      return typeof this.rules === 'string' ? this.rules.includes('required') : this.rules['required'];
+    }
+  },
+  methods: {
+    getValidationRules: function getValidationRules() {
+      return this.rules;
+    },
+    updateParentValue: function updateParentValue(value) {
+      this.$emit('input', value);
+    }
+  }
+});
+
+/***/ }),
+/* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("label", { attrs: { for: _vm.id } }, [
+      _vm._v(_vm._s(_vm.label) + " "),
+      _vm.isRequired
+        ? _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "validate",
+          rawName: "v-validate",
+          value: _vm.getValidationRules(),
+          expression: "getValidationRules()"
+        }
+      ],
+      ref: "input",
+      staticClass: "form-control",
+      class: { "is-invalid": _vm.errors.has(_vm.field_name) },
+      attrs: {
+        type: "text",
+        name: _vm.field_name,
+        id: _vm.id,
+        placeholder: _vm.placeholder
+      },
+      domProps: { value: _vm.value },
+      on: {
+        input: function($event) {
+          _vm.updateParentValue($event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "invalid-feedback" }, [
+      _vm._v(_vm._s(_vm.errors.first(_vm.field_name)))
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c45152ee", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

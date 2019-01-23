@@ -48,6 +48,8 @@ Vue.component('create-user-component', require('../../../components/admin/users/
  Common Components here
  */
 
+Vue.component('v-text', require('../../../components/common/forms/InputTextComponent.vue'));
+
 /*
  End of Common Components
  */
