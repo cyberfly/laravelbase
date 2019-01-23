@@ -9,6 +9,18 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// use VeeValidate
+
+const VeeValidate = require('vee-validate');
+
+window.Vue.use(VeeValidate);
+
+// use Vue Sweet Alert
+
+import VueSweetalert2 from 'vue-sweetalert2';
+
+window.Vue.use(VueSweetalert2);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -22,14 +34,31 @@ window.Vue = require('vue');
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
+/*
+Admin Components here
+ */
+
+Vue.component('create-user-component', require('../../../components/admin/users/CreateUserComponent.vue'));
+
+/*
+ End of Admin Components
+ */
+
+/*
+ Common Components here
+ */
+
+/*
+ End of Common Components
+ */
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-/*
+
 const app = new Vue({
     el: '#page-container'
 });
-*/
