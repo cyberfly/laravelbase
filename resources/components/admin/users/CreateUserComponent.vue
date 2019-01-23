@@ -19,9 +19,12 @@
             <div class="col-lg-6">
 
                 <div class="form-group">
-                    <label for="name">Name <span class="text-danger">*</span></label>
-                    <input type="text" name="name" v-model="user.name" v-validate="'required'" class="form-control" :class="{ 'is-invalid': errors.has('name') }" id="name"   >
-                    <div class="invalid-feedback">{{ errors.first('name') }}</div>
+                    <v-text
+                            v-model="user.name"
+                            :field_name="'name'"
+                            :label="'Name'"
+                            :rules="'required'"
+                    ></v-text>
                 </div>
 
                 <div class="form-group">
