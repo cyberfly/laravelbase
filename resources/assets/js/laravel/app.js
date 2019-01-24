@@ -49,6 +49,7 @@ Vue.component('create-user-component', require('../../../components/admin/users/
  */
 
 Vue.component('v-text', require('../../../components/common/forms/InputTextComponent.vue'));
+Vue.component('v-select', require('../../../components/common/forms/SelectInputComponent.vue'));
 
 /*
  End of Common Components

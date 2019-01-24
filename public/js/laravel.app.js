@@ -1030,6 +1030,7 @@ Vue.component('create-user-component', __webpack_require__(49));
  */
 
 Vue.component('v-text', __webpack_require__(79));
+Vue.component('v-select', __webpack_require__(85));
 /*
  End of Common Components
  */
@@ -40761,6 +40762,198 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-c45152ee", module.exports)
+  }
+}
+
+/***/ }),
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(50)
+/* script */
+var __vue_script__ = __webpack_require__(86)
+/* template */
+var __vue_template__ = __webpack_require__(87)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/components/common/forms/SelectInputComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a2b38ddc", Component.options)
+  } else {
+    hotAPI.reload("data-v-a2b38ddc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 86 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  inject: ['$validator'],
+  props: {
+    value: {},
+    items: {
+      type: Array
+    },
+    value_key: {
+      required: true
+    },
+    label_key: {
+      required: true
+    },
+    field_name: {
+      required: true
+    },
+    label: {
+      required: true
+    },
+    id: {
+      default: this.field_name
+    },
+    multiple: {
+      default: false
+    },
+    rules: {
+      default: '',
+      type: String
+    }
+  },
+  mounted: function mounted() {},
+  computed: {
+    isRequired: function isRequired() {
+      if (!this.rules) {
+        return false;
+      }
+
+      return typeof this.rules === 'string' ? this.rules.includes('required') : this.rules['required'];
+    }
+  },
+  methods: {
+    getValidationRules: function getValidationRules() {
+      return this.rules;
+    },
+    updateParentValue: function updateParentValue(value) {
+      this.$emit('input', value);
+    }
+  }
+});
+
+/***/ }),
+/* 87 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("label", { attrs: { for: _vm.id } }, [
+      _vm._v(_vm._s(_vm.label) + " "),
+      _vm.isRequired
+        ? _c("span", { staticClass: "text-danger" }, [_vm._v("*")])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c(
+      "select",
+      {
+        directives: [
+          {
+            name: "validate",
+            rawName: "v-validate",
+            value: _vm.getValidationRules(),
+            expression: "getValidationRules()"
+          }
+        ],
+        staticClass: "form-control",
+        class: { "is-invalid": _vm.errors.has(_vm.field_name) },
+        attrs: { name: _vm.field_name, id: _vm.id, multiple: _vm.multiple },
+        on: {
+          input: function($event) {
+            _vm.updateParentValue($event.target.value)
+          }
+        }
+      },
+      [
+        !_vm.multiple
+          ? _c("option", { domProps: { value: "" } }, [
+              _vm._v("Select " + _vm._s(_vm.label))
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm._l(_vm.items, function(item) {
+          return _c("option", { domProps: { value: item[_vm.value_key] } }, [
+            _vm._v(_vm._s(item[_vm.label_key]))
+          ])
+        })
+      ],
+      2
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "invalid-feedback" }, [
+      _vm._v(_vm._s(_vm.errors.first(_vm.field_name)))
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a2b38ddc", module.exports)
   }
 }
 
