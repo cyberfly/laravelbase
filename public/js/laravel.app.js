@@ -40176,10 +40176,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       this.submitted = true;
+      console.log('user: ', JSON.stringify(this.user, null, 2));
       this.$validator.validate().then(function (valid) {
         if (valid) {
-          console.log('user -->', _this.user);
-
           _this.store();
         } else {
           // scroll to top
@@ -40401,7 +40400,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _c("label", { attrs: { for: "roles" } }, [_vm._v("Role")]),
+            _c("label", { attrs: { for: "roles" } }, [_vm._v("Roles")]),
             _vm._v(" "),
             _c(
               "select",

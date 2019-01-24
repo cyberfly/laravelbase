@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="roles">Role</label>
+                    <label for="roles">Roles</label>
                     <select name="roles" v-model="user.roles" v-validate="'required'" class="form-control" id="roles" multiple>
                         <option v-for="role in roles" :value="role.id" >{{ role.name }}</option>
                     </select>
@@ -89,9 +89,10 @@
 
                 this.submitted = true;
 
+                console.log('user: ', JSON.stringify(this.user, null, 2));
+
                 this.$validator.validate().then(valid => {
                     if (valid) {
-                        console.log('user -->', this.user);
                         this.store();
                     }
                     else {
