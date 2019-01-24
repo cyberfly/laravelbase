@@ -40146,15 +40146,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['roles'],
   mounted: function mounted() {
@@ -40228,36 +40219,7 @@ var render = function() {
       }
     },
     [
-      _vm.submitted && _vm.errors.any()
-        ? _c(
-            "div",
-            {
-              staticClass: "alert alert-danger alert-dismissable",
-              attrs: { role: "alert" }
-            },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c("h3", { staticClass: "alert-heading font-size-h4 my-2" }, [
-                _vm._v("Validation Error")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticClass: "mb-0" }, [
-                _vm._v(
-                  "There is an error with your submission. Please fix the errros below to continue."
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                _vm._l(_vm.errors.all(), function(error) {
-                  return _c("li", [_vm._v(_vm._s(error))])
-                }),
-                0
-              )
-            ]
-          )
-        : _vm._e(),
+      _c("v-validation-alert", { attrs: { submitted: _vm.submitted } }),
       _vm._v(" "),
       _c("div", { staticClass: "row push" }, [
         _c("div", { staticClass: "col-lg-6" }, [
@@ -40280,7 +40242,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -40317,7 +40279,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -40355,7 +40317,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _vm._m(3),
+            _vm._m(2),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -40453,30 +40415,14 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(4)
+          _vm._m(3)
         ])
       ])
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "close",
-        attrs: {
-          type: "button",
-          "data-dismiss": "alert",
-          "aria-label": "Close"
-        }
-      },
-      [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
