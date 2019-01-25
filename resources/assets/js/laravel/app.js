@@ -21,6 +21,12 @@ import VueSweetalert2 from 'vue-sweetalert2';
 
 window.Vue.use(VueSweetalert2);
 
+// use Vue Multi Select
+
+import Multiselect from 'vue-multiselect';
+
+Vue.component('multiselect', Multiselect);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
