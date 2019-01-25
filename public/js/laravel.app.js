@@ -1021,6 +1021,7 @@ Admin Components here
  */
 
 Vue.component('create-user-component', __webpack_require__(49));
+Vue.component('show-user-component', __webpack_require__(91));
 /*
  End of Admin Components
  */
@@ -41049,6 +41050,75 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-99e81506", module.exports)
   }
 }
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(50)
+/* script */
+var __vue_script__ = __webpack_require__(92)
+/* template */
+var __vue_template__ = null
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/components/admin/users/ShowUserComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d1ecbf66", Component.options)
+  } else {
+    hotAPI.reload("data-v-d1ecbf66", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log('inline template component');
+  },
+  data: function data() {
+    return {
+      message: 'This is test message'
+    };
+  },
+  methods: {
+    store: function store() {
+      alert('Test inline component method');
+    }
+  }
+});
 
 /***/ })
 /******/ ]);
