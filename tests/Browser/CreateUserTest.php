@@ -47,7 +47,8 @@ class CreateUserTest extends DuskTestCase
                 ->type('email', $user->email)
                 ->type('password', 'secret')
                 ->type('password_confirmation', 'secret')
-                ->select('roles')
+                ->click('.multiselect__tags')
+                ->click('.multiselect__option')
                 ->press('Submit')
                 ->pause(1000)
                 ->assertSee('Good job');
@@ -81,7 +82,7 @@ class CreateUserTest extends DuskTestCase
                 ->assertSee('The name field is required.')
                 ->assertSee('The email field must be a valid email.')
                 ->assertSee('The password confirmation does not match.')
-                ->assertSee('The roles field is required.');
+                ->assertSee('The selected_roles field is required.');
         });
     }
 }
