@@ -37,11 +37,24 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="roles">Roles</label>
-                    <select name="roles" v-model="user.roles" v-validate="'required'" class="form-control" id="roles" multiple>
-                        <option v-for="role in roles" :value="role.id" >{{ role.name }}</option>
-                    </select>
-                    <div class="invalid-feedback">{{ errors.first('roles') }}</div>
+                    <label for="roles">Roles <span class="text-danger">*</span></label>
+                    <multiselect
+                            v-model="selected_roles"
+                            @input="updateSelectedRoles"
+                            :options="roles"
+                            :multiple="true"
+                            :searchable="true"
+                            :close-on-select="true"
+                            :show-labels="false"
+                            :hide-selected="true"
+                            track-by="id"
+                            label="name"
+                            v-validate="'required'"
+                            data-vv-name="selected_roles"
+                            data-vv-value-path="selected_roles"
+                            placeholder="Select Role">
+                    </multiselect>
+                    <div class="invalid-feedback">{{ errors.first('selected_roles') }}</div>
                 </div>
 
                 <div class="form-group">
@@ -72,9 +85,28 @@
                     roles: [],
                 },
                 submitted: false,
+                selected_roles: []
             }
         },
+        computed: {
+
+        },
         methods: {
+
+            /*
+            1. Extract selected roles id from Vue Multi Select object
+            2. Assign selected roles id to roles property in User object
+             */
+
+            updateSelectedRoles(roles) {
+                let selected_roles_id = [];
+
+                roles.forEach((role) => {
+                    selected_roles_id.push(role.id);
+                });
+
+                this.user.roles = selected_roles_id;
+            },
 
             handleSubmit(e) {
 
@@ -122,3 +154,5 @@
         }
     }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
