@@ -4,7 +4,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         <h3 class="alert-heading font-size-h4 my-2">Validation Error</h3>
-        <p class="mb-0">There is an error with your submission. Please fix the errros below to continue.</p>
+        <p class="mb-0">There is an error with your submission. Please fix the errors below to continue.</p>
         <ul>
             <li v-for="error in errors.all()">{{ error }}</li>
         </ul>
