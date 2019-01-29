@@ -58,6 +58,7 @@ Vue.component('show-user-component', require('../../../components/admin/users/Sh
 Vue.component('v-text', require('../../../components/common/forms/InputTextComponent.vue'));
 Vue.component('v-select', require('../../../components/common/forms/SelectInputComponent.vue'));
 Vue.component('v-validation-alert', require('../../../components/common/forms/ValidationAlertComponent.vue'));
+Vue.component('v-parent-validation-alert', require('../../../components/common/forms/ParentValidationAlertComponent.vue'));
 
 /*
  End of Common Components
