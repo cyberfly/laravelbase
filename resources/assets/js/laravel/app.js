@@ -64,6 +64,17 @@ Vue.component('v-parent-validation-alert', require('../../../components/common/f
  End of Common Components
  */
 
+/*
+ Example Components here
+ */
+
+Vue.component('v-example-multiform-parent', require('../../../components/examples/forms/MultiFormParentComponent.vue'));
+Vue.component('v-example-multiform-child', require('../../../components/examples/forms/MultiFormChildComponent.vue'));
+
+/*
+ End of Example Components
+ */
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

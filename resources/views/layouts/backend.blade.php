@@ -200,6 +200,11 @@
                                         <span class="nav-main-link-name">Blank</span>
                                     </a>
                                 </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('examples/multiforms/create') ? ' active' : '' }}" href="{{ route('examples.multiforms.create') }}">
+                                        <span class="nav-main-link-name">Multi Form</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-main-heading">Administrator</li>

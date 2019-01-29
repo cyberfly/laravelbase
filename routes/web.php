@@ -48,5 +48,15 @@ Route::middleware('auth')->group(function () {
 
     });
 
+    // Example routes
+
+    Route::prefix('examples')->name('examples.')->group(function () {
+
+        // multi forms example
+
+        Route::get('multiforms/create', 'Example\MultiFormController@create')->name('multiforms.create');
+        Route::post('multiforms', 'Example\MultiFormController@store')->name('multiforms.store');
+    });
+
 });
 
