@@ -6,6 +6,7 @@
                :value="value"
                :id="id"
                :placeholder="placeholder"
+               :readonly="readonly"
                @input="updateParentValue($event.target.value)"
                v-validate="getValidationRules()"
                class="form-control"
@@ -22,10 +23,13 @@
         props: {
             value: {},
             field_name: {
-                required: true
+                required: true,
             },
             label: {
-                required: true
+                required: true,
+            },
+            readonly: {
+                default: false,
             },
             placeholder: {
                 default: '',
