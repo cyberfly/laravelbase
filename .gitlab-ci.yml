@@ -1,6 +1,7 @@
 stages:
   - test
   - staging
+  - staging-fresh
 #   - production
 
 test:
@@ -21,13 +22,37 @@ test:
 staging:
   stage: staging
   script:
-    - cd /home/gitlab-runner/staging
-    - git pull http://$GITUSER:$GITPULLPASS@srv.nazrol.tech/internal/laravel-base/
-    - sudo chown www-data.www-data -R *
-    - sudo service nginx restart
+    - cd /home/gitlab-runner/www/larabase/
+    - sudo su www-data -s /bin/bash
+    - git pull http://$GITUSER:$GITPASSWORD@srv.nazrol.tech/internal/laravel-base/
+    - composer install
+    - php artisan config:clear
+    - php artisan view:clear
+    - php artisan cache:clear
+    - php artisan migrate
   environment:
-    name: staging
-    url: http://ppz.nazrol.tech
+    name: larabase
+    url: http://larabase.nazrol.tech
+  only:
+    - master
+  tags:
+    - staging
+    
+staging-fresh:
+  stage: staging
+  script:
+    - cd /home/gitlab-runner/www/larabase/
+    - sudo su www-data -s /bin/bash
+    - git pull http://$GITUSER:$GITPASSWORD@srv.nazrol.tech/internal/laravel-base/
+    - composer install
+    - php artisan config:clear
+    - php artisan view:clear
+    - php artisan cache:clear
+    - php artisan migrate:fresh --seed
+  environment:
+    name: larabase
+    url: http://larabase.nazrol.tech
+  when: manual
   only:
     - master
   tags:
