@@ -65,6 +65,16 @@ Vue.component('v-parent-validation-alert', require('../../../components/common/f
  */
 
 /*
+ Common Filters here
+ */
+
+import '../../../filters/common/v-currency';
+
+/*
+ End of Common Filters
+ */
+
+/*
  Example Components here
  */
 
