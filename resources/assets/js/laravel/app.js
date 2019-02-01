@@ -81,6 +81,9 @@ import '../../../filters/common/v-currency';
 Vue.component('v-example-multiform-parent', require('../../../components/examples/forms/MultiFormParentComponent.vue'));
 Vue.component('v-example-multiform-child', require('../../../components/examples/forms/MultiFormChildComponent.vue'));
 
+Vue.component('v-example-invoice-parent', require('../../../components/examples/invoices/InvoiceParentComponent.vue'));
+Vue.component('v-example-invoice-child', require('../../../components/examples/invoices/InvoiceChildComponent.vue'));
+
 /*
  End of Example Components
  */

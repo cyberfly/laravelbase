@@ -205,6 +205,11 @@
                                         <span class="nav-main-link-name">Multi Form</span>
                                     </a>
                                 </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('examples/invoices/create') ? ' active' : '' }}" href="{{ route('examples.invoices.create') }}">
+                                        <span class="nav-main-link-name">Invoice</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-main-heading">Administrator</li>

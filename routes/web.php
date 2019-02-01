@@ -56,6 +56,19 @@ Route::middleware('auth')->group(function () {
 
         Route::get('multiforms/create', 'Example\MultiFormController@create')->name('multiforms.create');
         Route::post('multiforms', 'Example\MultiFormController@store')->name('multiforms.store');
+
+        // invoices example
+
+        Route::get('invoices/create', 'Example\InvoiceController@create')->name('invoices.create');
+        Route::get('invoices/{invoice_id}/edit', 'Example\InvoiceController@edit')->name('invoices.edit');
+
+        Route::post('invoices', 'Example\InvoiceController@store')->name('invoices.store');
+
+        Route::put('invoices/{invoice_id}', 'Example\InvoiceController@update')->name('invoices.update');
+
+        Route::delete('invoices/{invoice_id}', 'Example\InvoiceController@destroy')->name('invoices.destroy');
+
+        //
     });
 
 });
