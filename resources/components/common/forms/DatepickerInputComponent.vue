@@ -7,7 +7,7 @@
                     :config="config"
                     :name="field_name"
                     :value="value"
-                    v-validate="{required:true}"
+                    v-validate="getValidationRules()"
                     v-model="date_input"
                     class="form-control"
                     :class="{ 'is-invalid': errors.has(field_name) }"
