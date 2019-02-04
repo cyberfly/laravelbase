@@ -27,6 +27,12 @@ import Multiselect from 'vue-multiselect';
 
 Vue.component('multiselect', Multiselect);
 
+// use Vue Flatpickr Date Picker
+
+import VueFlatPickr from 'vue-flatpickr-component';
+
+Vue.use(VueFlatPickr);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
