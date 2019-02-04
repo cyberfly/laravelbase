@@ -31,21 +31,21 @@
                     </div>
 
                     <div class="form-group">
-                        <v-text
+                        <v-date
                                 v-model="invoice_data.invoice_date"
                                 :field_name="'invoice_date'"
                                 :label="'Invoice Date'"
                                 :rules="'required'"
-                        ></v-text>
+                        ></v-date>
                     </div>
 
                     <div class="form-group">
-                        <v-text
+                        <v-date
                                 v-model="invoice_data.payment_due"
                                 :field_name="'payment_due'"
                                 :label="'Payment Due'"
                                 :rules="'required'"
-                        ></v-text>
+                        ></v-date>
                     </div>
 
                 </div>
