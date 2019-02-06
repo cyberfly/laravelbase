@@ -214,7 +214,7 @@
 
             update() {
 
-                this.setItemPriceAmount();
+                this.setItemAmount();
 
                 Vue.set(this.component_invoice_items, this.current_index, this.item_data);
 
