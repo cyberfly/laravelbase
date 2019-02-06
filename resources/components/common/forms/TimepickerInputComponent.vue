@@ -14,12 +14,12 @@
             ></flat-pickr>
 
             <div class="input-group-append">
-                <button v-if="!hide_toggle" class="btn btn-dark" type="button" title="Toggle" data-toggle>
-                    <i class="fa fa-clock">
+                <button v-if="show_toggle" class="btn btn-outline-dark" type="button" title="Toggle" data-toggle>
+                    <i class="far fa-clock">
                         <span aria-hidden="true" class="sr-only">Toggle</span>
                     </i>
                 </button>
-                <button v-if="!hide_clear" class="btn btn-outline-secondary" type="button" title="Clear" data-clear>
+                <button v-if="show_clear" class="btn btn-outline-secondary" type="button" title="Clear" data-clear>
                     <i class="fa fa-times">
                         <span aria-hidden="true" class="sr-only">Clear</span>
                     </i>
@@ -52,11 +52,11 @@
                 default: '',
                 type: String
             },
-            hide_toggle: {
-                default: false,
+            show_toggle: {
+                default: true,
                 type: Boolean
             },
-            hide_clear: {
+            show_clear: {
                 default: false,
                 type: Boolean
             },
