@@ -199,6 +199,7 @@ trait Attachable
         $transform_media = [
             'id' => $media->id,
             'name' => $media->name,
+            'file_name' => $media->file_name,
             'mime_type' => $media->mime_type,
             'url' => $media->getFullUrl(),
         ];
