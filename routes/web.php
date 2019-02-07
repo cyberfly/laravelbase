@@ -73,7 +73,10 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('invoices/{invoice_id}', 'Example\InvoiceController@destroy')->name('invoices.destroy');
 
-        //
+        // upload forms example
+
+        Route::get('uploadforms/create', 'Example\UploadFormController@create')->name('uploadforms.create');
+        Route::post('uploadforms', 'Example\UploadFormController@store')->name('uploadforms.store');
     });
 
 });
