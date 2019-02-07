@@ -43,7 +43,7 @@ class UploadController extends Controller
 
         $associated_model->deleteMedia($attachment_id);
 
-        return response()->setStatusCode(204);
+        return response('',204);
     }
 
     private function getUploadModel($request)
