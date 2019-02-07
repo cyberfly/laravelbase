@@ -27,6 +27,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('dashboard', 'Dashboard')->name('dashboard');
 
+    // Upload routes
+
+    Route::post('uploads/{collection_name}', 'UploadController@store')->name('uploads.store');
+    Route::delete('uploads/{attachment_id}', 'UploadController@destroy')->name('uploads.destroy');
+
     // Administrator routes
 
     Route::prefix('admin')->name('admin.')->group(function () {
