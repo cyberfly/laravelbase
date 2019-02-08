@@ -5,9 +5,7 @@
                 :options="config"
                 :duplicateCheck="!allow_duplicate"
                 :useCustomSlot=true
-                :name="field_name"
-                :value="value"
-                v-on:vdropzone-sending="sendingEvent"
+                @vdropzone-sending="sendingEvent"
                 @vdropzone-success="successUpload"
                 @vdropzone-removed-file="removeFile"
                 ref="myVueDropzone"
@@ -18,7 +16,6 @@
                 <div class="subtitle">{{ dropzone_subtitle }}</div>
             </div>
         </vue-dropzone>
-        <div class="invalid-feedback">{{ errors.first(field_name) }}</div>
     </div>
 </template>
 
