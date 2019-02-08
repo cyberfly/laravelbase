@@ -68,7 +68,10 @@
                                                 :label="'Cover Images'"
                                                 :rules="'required'"
                                                 :limit="2"
+                                                v-validate="'required'"
+                                                data-vv-name="cover_images"
                                         ></v-upload>
+                                        <div class="invalid-feedback">@{{ errors.first('cover_images') }}</div>
                                     </div>
 
                                     <div class="form-group">
@@ -77,7 +80,10 @@
                                                 :field_name="'gallery_images'"
                                                 :label="'Gallery Images'"
                                                 :rules="'required'"
+                                                v-validate="'required'"
+                                                data-vv-name="gallery_images"
                                         ></v-upload>
+                                        <div class="invalid-feedback">@{{ errors.first('gallery_images') }}</div>
                                     </div>
 
                                 </div>
