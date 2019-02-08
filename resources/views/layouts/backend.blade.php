@@ -210,6 +210,11 @@
                                         <span class="nav-main-link-name">Invoice</span>
                                     </a>
                                 </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('examples/uploadforms/create') ? ' active' : '' }}" href="{{ route('examples.uploadforms.create') }}">
+                                        <span class="nav-main-link-name">Upload Form</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-main-heading">Administrator</li>
