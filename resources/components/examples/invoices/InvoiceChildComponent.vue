@@ -58,6 +58,17 @@
                 return deleted_invoice_item_ids;
             },
         },
+        watch:{
+
+            /*
+             * Assign computed amount to this.item_data.amount
+             * */
+
+            amount (value) {
+                this.item_data.amount = value;
+            },
+
+        },
         methods: {
 
             getDefaultItemData() {
@@ -179,17 +190,6 @@
             },
 
             /*
-            * Assign computed amount to item_data.amount
-            * */
-            setItemAmount() {
-
-                // set amount from computed
-
-                this.item_data.amount = this.amount;
-
-            },
-
-            /*
             * New row created by v-for must be re-init for tooltip to work
             * */
 
@@ -201,8 +201,6 @@
 
             store() {
 
-                this.setItemAmount();
-
                 this.component_invoice_items.push(this.item_data);
 
                 this.reinitTooltip();
@@ -213,8 +211,6 @@
             },
 
             update() {
-
-                this.setItemAmount();
 
                 Vue.set(this.component_invoice_items, this.current_index, this.item_data);
 
