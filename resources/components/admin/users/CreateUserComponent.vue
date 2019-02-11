@@ -39,12 +39,12 @@
                 <div class="form-group">
 
                     <v-select
-                            v-model="selected_roles"
+                            v-model="user.roles"
                             :options="roles"
                             :multiple="true"
                             :label_key="'display_name'"
                             :value_key="'id'"
-                            :field_name="'selected_roles'"
+                            :field_name="'user.roles'"
                             :label="'Roles'"
                             :rules="'required'"
                     ></v-select>
@@ -84,26 +84,8 @@
         },
         computed: {
 
-            selected_roles_id: function () {
-
-                let selected_roles_id = [];
-
-                this.selected_roles.forEach((role_id) => {
-                    selected_roles_id.push(role_id);
-                });
-
-                return selected_roles_id;
-            },
         },
         watch: {
-
-            /*
-             * Assign computed selected_roles_id to this.user.roles
-             * */
-
-            selected_roles_id (value) {
-                this.user.roles = value;
-            },
 
         },
         methods: {
