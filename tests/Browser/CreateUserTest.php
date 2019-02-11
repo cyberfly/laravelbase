@@ -79,10 +79,10 @@ class CreateUserTest extends DuskTestCase
                 ->press('Submit')
                 ->pause(1000)
                 ->assertSee('Validation Error')
-                ->assertSee('The name field is required.')
+                ->assertSee('The Name field is required.')
                 ->assertSee('The email field must be a valid email.')
                 ->assertSee('The password confirmation does not match.')
-                ->assertSee('The selected_roles field is required.');
+                ->assertSee('The Roles field is required.');
         });
     }
 }

@@ -37,24 +37,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="roles">Roles <span class="text-danger">*</span></label>
-                    <multiselect
+
+                    <v-select
                             v-model="selected_roles"
-                            @input="updateSelectedRoles"
                             :options="roles"
                             :multiple="true"
-                            :searchable="true"
-                            :close-on-select="true"
-                            :show-labels="false"
-                            :hide-selected="true"
-                            track-by="id"
-                            label="name"
-                            v-validate="'required'"
-                            data-vv-name="selected_roles"
-                            data-vv-value-path="selected_roles"
-                            placeholder="Select Role">
-                    </multiselect>
-                    <div class="invalid-feedback">{{ errors.first('selected_roles') }}</div>
+                            :label_key="'display_name'"
+                            :value_key="'id'"
+                            :field_name="'selected_roles'"
+                            :label="'Roles'"
+                            :rules="'required'"
+                    ></v-select>
+
                 </div>
 
                 <div class="form-group">
@@ -90,23 +84,29 @@
         },
         computed: {
 
-        },
-        methods: {
+            selected_roles_id: function () {
 
-            /*
-            1. Extract selected roles id from Vue Multi Select object
-            2. Assign selected roles id to roles property in User object
-             */
-
-            updateSelectedRoles(roles) {
                 let selected_roles_id = [];
 
-                roles.forEach((role) => {
-                    selected_roles_id.push(role.id);
+                this.selected_roles.forEach((role_id) => {
+                    selected_roles_id.push(role_id);
                 });
 
-                this.user.roles = selected_roles_id;
+                return selected_roles_id;
             },
+        },
+        watch: {
+
+            /*
+             * Assign computed selected_roles_id to this.user.roles
+             * */
+
+            selected_roles_id (value) {
+                this.user.roles = value;
+            },
+
+        },
+        methods: {
 
             handleSubmit(e) {
 
@@ -154,5 +154,3 @@
         }
     }
 </script>
-
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
