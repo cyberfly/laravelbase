@@ -8,6 +8,7 @@
                     :name="field_name"
                     :value="value"
                     v-validate="getValidationRules()"
+                    :data-vv-as="label"
                     v-model="date_input"
                     class="form-control"
                     :class="{ 'is-invalid': errors.has(field_name) }"

@@ -9,6 +9,7 @@
                :readonly="readonly"
                @input="updateParentValue($event.target.value)"
                v-validate="getValidationRules()"
+               :data-vv-as="label"
                class="form-control"
                :class="{ 'is-invalid': errors.has(field_name) }"
                ref="input">
