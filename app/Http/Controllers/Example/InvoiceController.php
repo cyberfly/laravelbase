@@ -24,27 +24,7 @@ class InvoiceController extends Controller
 
     public function create()
     {
-        $invoice = [
-            'invoice_id' => null,
-            'customer_id' => null,
-            'invoice_number' => null,
-            'po_number' => null,
-            'invoice_date' => today()->format('Y-m-d'),
-            'payment_due' => today()->format('Y-m-d'),
-            'invoice_items' => [
-                [
-                    'id' => null,
-                    'invoice_id' => null,
-                    'item_name' => 'Test',
-                    'item_decription' => 'Lorem',
-                    'quantity' => 2,
-                    'price' => 2,
-                    'amount' => 4,
-                ]
-            ],
-        ];
-
-        return view('examples.invoices.create', compact('invoice'));
+        return view('examples.invoices.create');
     }
 
     /**

@@ -1,4 +1,4 @@
-<v-example-invoice-parent :invoice="{{ json_encode($invoice) }}" inline-template>
+<v-example-invoice-parent @isset($invoice) :invoice="{{ json_encode($invoice) }}" @endisset inline-template>
 
     <div>
 

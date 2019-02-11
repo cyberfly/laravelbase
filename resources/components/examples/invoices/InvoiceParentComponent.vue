@@ -3,7 +3,20 @@
     export default {
         props: {
             invoice: {
-                required: true
+                default: function () {
+
+                    const default_invoice = {
+                        'invoice_id': null,
+                        'customer_id': null,
+                        'invoice_number': null,
+                        'po_number': null,
+                        'invoice_date': null,
+                        'payment_due': null,
+                        'invoice_items': [],
+                    };
+
+                    return default_invoice;
+                },
             }
         },
         mounted() {
