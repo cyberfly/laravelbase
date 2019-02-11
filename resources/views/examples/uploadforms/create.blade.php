@@ -70,6 +70,7 @@
                                                 :limit="2"
                                                 v-validate="'required'"
                                                 data-vv-name="cover_images"
+                                                :data-vv-as="'Cover Images'"
                                         ></v-upload>
                                         <div class="invalid-feedback">@{{ errors.first('cover_images') }}</div>
                                     </div>
@@ -82,6 +83,7 @@
                                                 :rules="'required'"
                                                 v-validate="'required'"
                                                 data-vv-name="gallery_images"
+                                                :data-vv-as="'Gallery Images'"
                                         ></v-upload>
                                         <div class="invalid-feedback">@{{ errors.first('gallery_images') }}</div>
                                     </div>
