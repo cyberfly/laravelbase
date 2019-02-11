@@ -32,7 +32,7 @@
             <div class="block-content">
 
                 <!-- include invoice parent component -->
-                @include('examples.invoices.partials.v-invoice-parent');
+                @include('examples.invoices.partials.v-invoice-parent')
 
             </div>
         </div>
