@@ -17,7 +17,7 @@ class CreateExampleInvoiceItemsTable extends Migration
             $table->increments('id');
             $table->integer('invoice_id');
             $table->string('item_name')->nullable();
-            $table->text('item_decription')->nullable();
+            $table->text('item_description')->nullable();
             $table->integer('quantity')->nullable();
             $table->decimal('price', 13, 4)->nullable();
             $table->decimal('amount', 13, 4)->nullable();
