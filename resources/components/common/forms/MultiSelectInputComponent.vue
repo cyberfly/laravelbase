@@ -138,7 +138,7 @@
 
                 }
                 else {
-                    selected_options_value = options;
+                    selected_options_value = options[this.value_key];
                 }
 
                 // emit value to parent component
