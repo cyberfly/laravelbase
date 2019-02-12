@@ -67,6 +67,7 @@ Vue.component('v-date', require('../../../components/common/forms/DatepickerInpu
 Vue.component('v-datetime', require('../../../components/common/forms/DatetimepickerInputComponent.vue'));
 Vue.component('v-time', require('../../../components/common/forms/TimepickerInputComponent.vue'));
 Vue.component('v-upload', require('../../../components/common/forms/UploadInputComponent.vue'));
+Vue.component('v-money', require('../../../components/common/forms/MoneyInputComponent.vue'));
 
 Vue.component('v-validation-alert', require('../../../components/common/forms/ValidationAlertComponent.vue'));
 Vue.component('v-parent-validation-alert', require('../../../components/common/forms/ParentValidationAlertComponent.vue'));
