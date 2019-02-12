@@ -136,12 +136,12 @@
 
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <v-text
+                                            <v-money
                                                     v-model="item_data.price"
                                                     :field_name="'price'"
                                                     :label="'Price'"
-                                                    :rules="'required|decimal'"
-                                            ></v-text>
+                                                    :rules="'required'"
+                                            ></v-money>
                                         </div>
                                     </div>
 
