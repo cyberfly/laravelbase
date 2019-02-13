@@ -9,7 +9,7 @@
                 :searchable="searchable"
                 :close-on-select="true"
                 :show-labels="false"
-                :hide-selected="true"
+                :hide-selected="false"
                 :track-by="value_key"
                 :label="label_key"
                 v-validate="getValidationRules()"
@@ -105,12 +105,55 @@
         data() {
 
             return {
-                selected_options: [],
+                selected_options: this.getDefaultSelectedOptions(),
                 submitted: false
             }
 
         },
         methods: {
+
+            getDefaultSelectedOptions () {
+
+                let selected_options = [];
+
+                // only get the default selected options if value from parent v-model is not null
+
+                if (this.value) {
+
+                    if (this.multiple) {
+
+                        this.value.forEach((value) => {
+
+                            const selected_object = this.getObjectByValue(this.options, this.value_key, value);
+
+                            if (typeof selected_object !== 'undefined') {
+                                selected_options.push(selected_object);
+                            }
+
+                        });
+
+                    }
+                    else {
+
+                        const selected_object = this.getObjectByValue(this.options, this.value_key, this.value);
+
+                        if (typeof selected_object !== 'undefined') {
+                            selected_options = selected_object;
+                        }
+                    }
+                }
+
+                return selected_options;
+            },
+
+            getObjectByValue(object, property, value) {
+
+                const selected_object = object.find(item => {
+                    return item[property] == value;
+                });
+
+                return selected_object;
+            },
 
             getValidationRules() {
                 return this.rules;
