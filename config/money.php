@@ -1096,7 +1096,7 @@ return [
         'code'                => 458,
         'precision'           => 2,
         'subunit'             => 100,
-        'symbol'              => 'RM',
+        'symbol'              => 'RM ',
         'symbol_first'        => true,
         'decimal_mark'        => '.',
         'thousands_separator' => ',',
