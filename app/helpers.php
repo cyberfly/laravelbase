@@ -4,8 +4,6 @@
  *  Custom Laravel Helpers
  */
 
-use Akaunting\Money\Currency;
-use Akaunting\Money\Money;
 use Illuminate\Support\Carbon;
 
 if (! function_exists('carbon')) {
@@ -40,6 +38,6 @@ if (! function_exists('my_datetime')) {
 if (! function_exists('my_money')) {
     function my_money($amount)
     {
-        return new Money($amount, new Currency('MYR'));
+        return money($amount, 'MYR', true);
     }
 }
