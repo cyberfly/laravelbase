@@ -169,19 +169,23 @@
 
                 let selected_options_value = null;
 
-                if (this.multiple) {
+                if (options) {
 
-                    let selected_options_id = [];
+                    if (this.multiple) {
 
-                    options.forEach((option) => {
-                        selected_options_id.push(option[this.value_key]);
-                    });
+                        let selected_options_id = [];
 
-                    selected_options_value = selected_options_id;
+                        options.forEach((option) => {
+                            selected_options_id.push(option[this.value_key]);
+                        });
 
-                }
-                else {
-                    selected_options_value = options[this.value_key];
+                        selected_options_value = selected_options_id;
+
+                    }
+                    else {
+                        selected_options_value = options[this.value_key];
+                    }
+
                 }
 
                 // emit value to parent component
