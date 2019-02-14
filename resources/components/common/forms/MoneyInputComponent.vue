@@ -74,22 +74,14 @@
         },
         watch: {
 
-            /*
-            we manually set the amount from parent v-model value
-            because vue-autonumeric cant directly set the value
-            */
-
-            value (value, old_value) {
-                this.amount = value;
-            },
-
             amount (value) {
                 this.updateParentValue(value);
             }
+
         },
         data() {
             return {
-                amount: null,
+                amount: this.getDefaultAmount(),
                 autonumeric_options: {
                     emptyInputBehavior: 'null',
                     digitGroupSeparator: ',',
@@ -101,6 +93,17 @@
             }
         },
         methods: {
+
+            getDefaultAmount() {
+
+                let default_amount = null;
+
+                if (this.value !== null) {
+                    default_amount = this.value;
+                }
+
+                return default_amount;
+            },
 
             getValidationRules() {
                 return this.rules;
