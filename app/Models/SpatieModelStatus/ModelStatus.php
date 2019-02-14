@@ -11,7 +11,7 @@ class ModelStatus extends SpatieModelStatus
     use SoftDeletes;
 
     protected $with = [
-        'caused_by',
+        'causedBy',
     ];
 
     public static function boot()
@@ -31,7 +31,7 @@ class ModelStatus extends SpatieModelStatus
         });
     }
 
-    public function caused_by()
+    public function causedBy()
     {
         return $this->belongsTo(User::class,'causer_id', 'id');
     }
