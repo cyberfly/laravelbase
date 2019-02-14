@@ -7,7 +7,7 @@ return [
      *
      * The model must be or extend `Spatie\ModelStatus\Status`.
      */
-    'status_model' => Spatie\ModelStatus\Status::class,
+    'status_model' => \App\Models\SpatieModelStatus\ModelStatus::class,
 
     /*
      * The name of the column which holds the ID of the model related to the statuses.

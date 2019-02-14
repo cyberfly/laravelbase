@@ -13,7 +13,9 @@ class CreateStatusesTable extends Migration
             $table->string('name');
             $table->text('reason')->nullable();
             $table->morphs('model');
+            $table->integer('causer_id')->unsigned()->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
