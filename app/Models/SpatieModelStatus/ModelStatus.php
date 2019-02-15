@@ -16,6 +16,8 @@ class ModelStatus extends SpatieModelStatus
 
     public static function boot()
     {
+        parent::boot();
+
         static::creating(function(ModelStatus $status) {
 
             $causer_id = null;
