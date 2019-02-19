@@ -9,6 +9,13 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// use Vue Bootstrap
+
+import BootstrapVue from 'bootstrap-vue';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
+window.Vue.use(BootstrapVue);
+
 // use VeeValidate
 
 const VeeValidate = require('vee-validate');
