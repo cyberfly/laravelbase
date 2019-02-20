@@ -74,6 +74,14 @@
         },
         watch: {
 
+            // listen for new value from parent component
+
+            value: function (value, old_value) {
+                if (value !== old_value) {
+                    this.amount = value;
+                }
+            },
+
             amount (value) {
                 this.updateParentValue(value);
             }
@@ -81,7 +89,7 @@
         },
         data() {
             return {
-                amount: this.getDefaultAmount(),
+                amount: this.value,
                 autonumeric_options: {
                     emptyInputBehavior: 'null',
                     digitGroupSeparator: ',',
