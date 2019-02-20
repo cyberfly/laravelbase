@@ -3,7 +3,7 @@
         <label :for="id">{{ label }} <span v-if="isRequired" class="text-danger">*</span></label>
         <multiselect
                 v-model="selected_options"
-                :options="options"
+                :options="options_data"
                 @input="updateSelectedOptions"
                 :multiple="multiple"
                 :searchable="searchable"
@@ -100,7 +100,24 @@
                     ? this.rules.includes('required')
                     : this.rules['required'];
 
-            }
+            },
+
+            options_data: function () {
+
+                let options = this.options;
+
+                if (!this.multiple) {
+
+                    const default_option = {
+                        [this.value_key]: null,
+                        [this.label_key]: this.placeholder
+                    };
+
+                    options = [default_option, ...this.options];
+                }
+
+                return options;
+            },
         },
         watch: {
 
