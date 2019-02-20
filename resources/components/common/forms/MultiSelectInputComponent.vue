@@ -102,6 +102,17 @@
 
             }
         },
+        watch: {
+
+            // listen for new value from parent component
+
+            value: function (value, old_value) {
+                if (value !== old_value) {
+                    this.selected_options = this.getDefaultSelectedOptions();
+                }
+            },
+
+        },
         data() {
 
             return {
