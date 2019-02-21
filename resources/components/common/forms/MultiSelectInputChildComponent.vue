@@ -145,7 +145,11 @@
         },
         created() {
 
-            this.getAjaxOptions();
+            // if there is parent value on Init, only we call the ajax
+
+            if (this.parent_value) {
+                this.getAjaxOptions();
+            }
 
         },
         methods: {
@@ -162,9 +166,9 @@
                     .get(route(this.api_route, query))
                     .then(response => {
 
-                        console.log('res -->', response.data);
+                        console.log('res -->', response.data.data);
 
-                        let ajax_options = response.data;
+                        let ajax_options = response.data.data;
 
                         if (!this.multiple) {
 
