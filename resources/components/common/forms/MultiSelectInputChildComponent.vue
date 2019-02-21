@@ -139,7 +139,8 @@
                 options: [],
                 selected_options: [],
                 submitted: false,
-                state: 'init'
+                state: 'init',
+                isLoading: false,
             };
 
         },
