@@ -2,7 +2,7 @@
     <div>
         <label :for="id">{{ label }} <span v-if="isRequired" class="text-danger">*</span></label>
         <multiselect
-                :value="selected_options"
+                v-model="selected_options"
                 :options="options"
                 @input="updateSelectedOptions"
                 :multiple="multiple"
