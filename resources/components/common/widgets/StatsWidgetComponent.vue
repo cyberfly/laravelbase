@@ -7,6 +7,7 @@
                         :data="chart_data"
                         :gradient="line_color"
                         :radius="line_radius"
+                        :width="chart_width"
                         auto-draw
                         smooth>
                 </trend>
@@ -54,6 +55,10 @@
 
                     return default_data;
                 },
+            },
+            chart_width: {
+                default: 90,
+                type: Number
             },
             line_radius: {
                 default: 1,
