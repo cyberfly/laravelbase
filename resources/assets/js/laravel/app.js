@@ -80,6 +80,8 @@ Vue.component('v-money', require('../../../components/common/forms/MoneyInputCom
 Vue.component('v-validation-alert', require('../../../components/common/forms/ValidationAlertComponent.vue'));
 Vue.component('v-parent-validation-alert', require('../../../components/common/forms/ParentValidationAlertComponent.vue'));
 
+Vue.component('v-stats-widget', require('../../../components/common/widgets/StatsWidgetComponent.vue'));
+
 /*
  End of Common Components
  */
