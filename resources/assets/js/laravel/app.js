@@ -81,6 +81,8 @@ Vue.component('v-validation-alert', require('../../../components/common/forms/Va
 Vue.component('v-parent-validation-alert', require('../../../components/common/forms/ParentValidationAlertComponent.vue'));
 
 Vue.component('v-stats-widget', require('../../../components/common/widgets/StatsWidgetComponent.vue'));
+Vue.component('v-media-widget', require('../../../components/common/widgets/MediaWidgetComponent.vue'));
+Vue.component('v-media-light-widget', require('../../../components/common/widgets/MediaLightWidgetComponent.vue'));
 
 /*
  End of Common Components
