@@ -31,7 +31,7 @@ if (! function_exists('my_datetime')) {
             return '-';
         }
 
-        return Carbon::parse($date)->format('d/m/Y H:i:s');
+        return Carbon::parse($date)->format('d/m/Y H:i A');
     }
 }
 
