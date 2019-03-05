@@ -68,7 +68,7 @@
                 };
 
                 return axios
-                    .post(route(this.api_route, query), { email: value })
+                    .post(route(this.api_route), query)
                     .then((response) => {
 
                         return {
