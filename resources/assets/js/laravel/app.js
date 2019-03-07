@@ -69,7 +69,7 @@ Vue.component('show-user-component', require('../../../components/admin/users/Sh
  */
 
 Vue.component('v-text', require('../../../components/common/forms/InputTextComponent.vue'));
-Vue.component('v-unique-text', require('../../../components/common/forms/InputUniqueTextComponent.vue'));
+Vue.component('v-unique', require('../../../components/common/forms/InputUniqueTextComponent.vue'));
 Vue.component('v-select', require('../../../components/common/forms/MultiSelectInputComponent.vue'));
 Vue.component('v-child-select', require('../../../components/common/forms/MultiSelectInputChildComponent.vue'));
 Vue.component('v-date', require('../../../components/common/forms/DatepickerInputComponent.vue'));
