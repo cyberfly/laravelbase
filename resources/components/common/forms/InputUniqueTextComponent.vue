@@ -10,6 +10,7 @@
                @input="updateParentValue($event.target.value)"
                v-validate="getValidationRules()"
                :data-vv-as="label"
+               data-vv-delay="100"
                class="form-control"
                :class="{ 'is-invalid': errors.has(field_name) }"
                ref="input">
@@ -58,13 +59,13 @@
         },
         mounted () {
 
-            const isUnique = (value) => {
+            const isUnique = (value, [unique_key, except_key, except_value]) => {
 
                 const query = {
-                    unique_key: this.field_name,
+                    unique_key: unique_key,
                     unique_value: value,
-                    except_key: this.except_key,
-                    except_value: this.except_value,
+                    except_key: except_key,
+                    except_value: except_value,
                 };
 
                 return axios
@@ -113,7 +114,24 @@
         methods: {
 
             getValidationRules() {
-                return this.rules + '|unique';
+
+                let validation_rules = {
+                    required: this.isRequired,
+                    unique: [
+                        this.field_name,
+                        this.except_key,
+                        this.except_value
+                    ]
+                };
+
+                // append another validation rules
+
+                this.rules.split("|").forEach(function (rule) {
+                    validation_rules[rule] = true;
+                });
+
+                return validation_rules;
+
             },
 
             updateParentValue(value) {
