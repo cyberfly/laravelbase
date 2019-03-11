@@ -23,10 +23,10 @@
 
         props: {
             label: {
-                type: String,
+                type: String|Number,
             },
             description: {
-                type: String,
+                type: String|Number,
             },
             link_to: {
                 default: 'javascript:void(0)',
