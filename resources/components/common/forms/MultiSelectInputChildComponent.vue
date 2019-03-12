@@ -13,7 +13,7 @@
                 :hide-selected="false"
                 :track-by="value_key"
                 :label="label_key"
-                v-validate="getValidationRules()"
+                v-validate.disable="getValidationRules()"
                 :data-vv-name="field_name"
                 :data-vv-value-path="field_name"
                 :data-vv-as="label"
@@ -167,8 +167,6 @@
                     .get(route(this.api_route, query))
                     .then(response => {
 
-                        console.log('res -->', response.data.data);
-
                         let ajax_options = response.data.data;
 
                         if (!this.multiple) {
@@ -272,6 +270,10 @@
                     }
 
                 }
+
+                // perform validation
+
+                this.$validator.validate(this.field_name);
 
                 // emit value to parent component
 
