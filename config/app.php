@@ -181,7 +181,14 @@ return [
          * Macros Service Providers...
          */
 
-        \App\Providers\BuilderServiceProvider::class
+        \App\Providers\BuilderServiceProvider::class,
+
+
+        /*
+         * Custom Service Providers...
+         * */
+
+        \App\Providers\ViewComposerServiceProvider::class,
 
     ],
 

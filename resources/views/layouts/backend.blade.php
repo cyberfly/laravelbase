@@ -457,6 +457,15 @@
         </div>
         <!-- END Page Container -->
 
+        <!-- laravel-localization-to-vue JS -->
+        <script>
+
+            window.default_locale = "{{ config('app.locale') }}";
+            window.fallback_locale = "{{ config('app.fallback_locale') }}";
+            window.messages = @json($messages);
+
+        </script>
+
         <!-- Dashmix Core JS -->
         <script src="{{ mix('js/dashmix.app.js') }}"></script>
 

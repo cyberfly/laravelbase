@@ -9,6 +9,16 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// use Laravel Localization to Vue
+
+import Lang from 'lang.js';
+
+const default_locale = window.default_locale;
+const fallback_locale = window.fallback_locale;
+const messages = window.messages;
+
+Vue.prototype.trans = new Lang( { messages: messages, locale: default_locale, fallback: fallback_locale } );
+
 // use Vue Bootstrap
 
 import BootstrapVue from 'bootstrap-vue';
