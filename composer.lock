@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e69d05639214d82493954bc866bb8031",
+    "content-hash": "5ad24a3269936a1d86c2026ce1a543b0",
     "packages": [
         {
             "name": "akaunting/money",
@@ -332,6 +332,49 @@
             ],
             "description": "Because I can never remember exactly how to autoload my helpers.php file",
             "time": "2018-11-12T22:12:27+00:00"
+        },
+        {
+            "name": "caouecs/laravel-lang",
+            "version": "3.0.60",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "reference": "274e80d8ce28771fb56c77742b8b5d12bdc8fa21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/274e80d8ce28771fb56c77742b8b5d12bdc8fa21",
+                "reference": "274e80d8ce28771fb56c77742b8b5d12bdc8fa21",
+                "shasum": ""
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.10"
+            },
+            "suggest": {
+                "ablunier/laravel-lang-installer": "Command for easily add languages to a Laravel project",
+                "andrey-helldar/laravel-lang-publisher": "Easy installation and update of translation files for your project",
+                "arcanedev/laravel-lang": "Translations manager and checker for Laravel 5",
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "time": "2019-03-07T18:23:30+00:00"
         },
         {
             "name": "davejamesmiller/laravel-breadcrumbs",
