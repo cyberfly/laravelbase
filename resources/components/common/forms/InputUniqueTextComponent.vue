@@ -57,7 +57,7 @@
                 type: String
             }
         },
-        mounted () {
+        created () {
 
             const isUnique = (value, [unique_key, except_key, except_value]) => {
 
