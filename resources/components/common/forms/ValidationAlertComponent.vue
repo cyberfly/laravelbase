@@ -3,8 +3,8 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h3 class="alert-heading font-size-h4 my-2">Validation Error</h3>
-        <p class="mb-0">There is an error with your submission. Please fix the errors below to continue.</p>
+        <h3 class="alert-heading font-size-h4 my-2">{{ trans.get('messages.validation_error_header') }}</h3>
+        <p class="mb-0">{{ trans.get('messages.validation_error_message') }}</p>
         <ul>
             <li v-for="error in errors.all()">{{ error }}</li>
         </ul>
@@ -23,7 +23,7 @@
             }
         },
         mounted() {
-
+            console.log(this.trans.get('messages.validation_error_message'));
         },
         computed: {
 
