@@ -23,7 +23,7 @@
             }
         },
         mounted() {
-            console.log(this.trans.get('messages.validation_error_message'));
+
         },
         computed: {
 

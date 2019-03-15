@@ -82,7 +82,7 @@
             placeholder: function () {
                 // if field_placeholder is not set, we auto created a placeholder
                 if (!this.field_placeholder) {
-                    return 'Select ' + this.label;
+                    return this.trans.get('labels.select') + ' ' + this.label;
                 }
                 else {
                     return this.field_placeholder;
