@@ -126,6 +126,8 @@ Vue.component('v-example-invoice-child', require('../../../components/examples/i
 
 Vue.component('v-example-upload-form', require('../../../components/examples/forms/UploadFormComponent.vue'));
 
+Vue.component('v-example-vuepagination', require('../../../components/examples/vuepaginations/VuePaginationIndexComponent.vue'));
+
 /*
  End of Example Components
  */

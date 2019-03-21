@@ -215,6 +215,11 @@
                                         <span class="nav-main-link-name">Upload Form</span>
                                     </a>
                                 </li>
+                                <li class="nav-main-item">
+                                    <a class="nav-main-link{{ request()->is('examples/vuepaginations/index') ? ' active' : '' }}" href="{{ route('examples.vuepaginations.index') }}">
+                                        <span class="nav-main-link-name">Vue Pagination</span>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-main-heading">Administrator</li>

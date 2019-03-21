@@ -77,6 +77,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get('uploadforms/create', 'Example\UploadFormController@create')->name('uploadforms.create');
         Route::post('uploadforms', 'Example\UploadFormController@store')->name('uploadforms.store');
+
+        // vue laravel pagination example
+
+        Route::get('vuepaginations/index', 'Example\VuePaginationController@index')->name('vuepaginations.index');
+        Route::get('vuepaginations/usersdata', 'Example\VuePaginationController@getUsers')->name('vuepaginations.usersdata');
+
     });
 
 });
