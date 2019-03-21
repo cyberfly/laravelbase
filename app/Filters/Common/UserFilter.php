@@ -23,7 +23,10 @@ class UserFilter extends QueryFilters
                 if (!empty($search_type)) {
 
                     if ($search_type === 'email') {
-                        $query->where($search_type, $search);
+
+                        if (!empty($search)) {
+                            $query->where($search_type, $search);
+                        }
                     }
                     else {
                         $query->where($search_type, 'like', '%' . $search . '%');

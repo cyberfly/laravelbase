@@ -4,11 +4,11 @@
 
         <div class="block block-rounded block-bordered">
             <div class="block-header block-header-default">
-                <h3 class="block-title">Search</h3>
+                <h3 class="block-title">List Of Users</h3>
             </div>
             <div class="block-content">
 
-                <form @submit.prevent="handleSubmit">
+                <form>
                     <div class="form-row">
 
                         <div class="form-group col-md-6">
@@ -26,15 +26,6 @@
                     </div>
 
                 </form>
-
-            </div>
-        </div>
-
-        <div class="block block-rounded block-bordered">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">List Of Users</h3>
-            </div>
-            <div class="block-content">
 
                 <table class="table table-bordered table-hover table-striped">
                     <thead>
