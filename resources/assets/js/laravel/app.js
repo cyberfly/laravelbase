@@ -98,6 +98,7 @@ Vue.component('v-search-field', require('../../../components/common/filters/Sear
 Vue.component('v-stats-widget', require('../../../components/common/widgets/StatsWidgetComponent.vue'));
 Vue.component('v-media-widget', require('../../../components/common/widgets/MediaWidgetComponent.vue'));
 Vue.component('v-media-light-widget', require('../../../components/common/widgets/MediaLightWidgetComponent.vue'));
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 /*
  End of Common Components
