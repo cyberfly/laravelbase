@@ -65,3 +65,10 @@ if (! function_exists('hasChildRelations')) {
         return false;
     }
 }
+
+if (! function_exists('current_user')) {
+    function current_user()
+    {
+        return auth()->user();
+    }
+}
