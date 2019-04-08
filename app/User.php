@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\SpatiePermission\WebPermission;
 use App\Traits\Filterable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -31,4 +32,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get list of web permissions to use in Vue component / front end
+     * @return array
+     */
+    public function getWebPermissionsAttribute()
+    {
+        $permissions = [];
+
+        foreach (WebPermission::all() as $permission) {
+            if (auth()->user()->can($permission->name)) {
+                $permissions[] = $permission->name;
+            }
+        }
+
+        return $permissions;
+    }
 }
