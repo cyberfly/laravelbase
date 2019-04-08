@@ -5,9 +5,8 @@ namespace App\Models\SpatiePermission;
 use App\Traits\WebGuardScope;
 use Tightenco\Parental\HasParentModel;
 use App\Traits\SpatiePermission;
-use Spatie\Permission\Models\Permission as SpatiePermissionModel;
 
-class WebPermission extends SpatiePermissionModel
+class WebPermission extends Permission
 {
     use HasParentModel;
     use SpatiePermission;
