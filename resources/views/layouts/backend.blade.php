@@ -471,6 +471,15 @@
 
         </script>
 
+        <!-- spatie permissions to Vue JS -->
+        <script>
+            @auth
+                window.Permissions = {!! json_encode(auth()->user()->webPermissions, true) !!};
+            @else
+                window.Permissions = [];
+            @endauth
+        </script>
+
         <!-- Dashmix Core JS -->
         <script src="{{ mix('js/dashmix.app.js') }}"></script>
 

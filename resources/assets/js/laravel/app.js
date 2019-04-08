@@ -9,6 +9,11 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// custom mixin
+
+import Permissions from '../../../assets/js/mixins/Permissions';
+Vue.mixin(Permissions);
+
 // use Laravel Localization to Vue
 
 import Lang from 'lang.js';
