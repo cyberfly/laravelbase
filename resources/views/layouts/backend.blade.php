@@ -442,6 +442,8 @@
             <!-- Main Container -->
             <main id="main-container">
                 @yield('content')
+
+                <v-ajax-loading></v-ajax-loading>
             </main>
             <!-- END Main Container -->
 

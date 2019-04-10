@@ -18,6 +18,9 @@ Vue.prototype.$eventBus = new Vue();
 import Permissions from '../../../assets/js/mixins/Permissions';
 Vue.mixin(Permissions);
 
+import ShowHideLoading from '../../../assets/js/mixins/ShowHideLoading';
+Vue.mixin(ShowHideLoading);
+
 // use Laravel Localization to Vue
 
 import Lang from 'lang.js';
@@ -58,6 +61,12 @@ Vue.component('multiselect', Multiselect);
 import VueFlatPickr from 'vue-flatpickr-component';
 
 Vue.use(VueFlatPickr);
+
+// use Vue loading
+
+import loading from 'vue-full-loading';
+
+Vue.component('loading', loading);
 
 /**
  * The following block of code may be used to automatically register your
@@ -108,6 +117,7 @@ Vue.component('v-stats-widget', require('../../../components/common/widgets/Stat
 Vue.component('v-media-widget', require('../../../components/common/widgets/MediaWidgetComponent.vue'));
 Vue.component('v-media-light-widget', require('../../../components/common/widgets/MediaLightWidgetComponent.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
+Vue.component('v-ajax-loading', require('../../../components/common/loaders/AjaxLoadingComponent.vue'));
 
 /*
  End of Common Components
