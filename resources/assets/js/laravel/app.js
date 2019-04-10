@@ -9,6 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+// vue global event bus
+
+Vue.prototype.$eventBus = new Vue();
+
 // custom mixin
 
 import Permissions from '../../../assets/js/mixins/Permissions';
