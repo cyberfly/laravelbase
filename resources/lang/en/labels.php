@@ -25,4 +25,8 @@ return [
     'notifications' => 'Notifications',
     'profile'       => 'Profile',
     'inbox'         => 'Inbox',
+
+    // action label
+
+    'loading' => 'Loading ...',
 ];

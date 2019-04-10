@@ -23,6 +23,10 @@ return [
 
     'user_options'  => 'Pilihan Pengguna',
     'notifications' => 'Pemberitahuan',
-    'profile'       => 'Profile',
+    'profile'       => 'Profail',
     'inbox'         => 'Inbox',
+
+    // action label
+
+    'loading' => 'Sedang Proses ...',
 ];
