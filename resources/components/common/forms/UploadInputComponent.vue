@@ -60,6 +60,12 @@
             max_filesize: {
                 default: 2.0
             },
+            default_attachments: {
+                type: Array,
+                default: function () {
+                    return [];
+                }
+            },
             id: {
                 default: '',
                 type: String
@@ -68,6 +74,30 @@
                 default: '',
                 type: String
             },
+        },
+        mounted: function () {
+
+            // auto attached default attachments if exist
+
+            if (this.default_attachments.length > 0) {
+
+                for (let attachment of this.default_attachments) {
+
+                    let file = { size: 123, name: attachment.file_name, type: attachment.mime_type };
+                    let url = attachment.url;
+
+                    // auto attached default attachments
+
+                    this.$refs.myVueDropzone.manuallyAddFile(file, url);
+
+                    this.attached_media.push(attachment);
+                }
+
+                // notify parent form of latest attached_media_id
+
+                this.updateParentValue(this.attached_media_id);
+            }
+
         },
         data: function () {
             return {

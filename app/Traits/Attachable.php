@@ -132,11 +132,10 @@ trait Attachable
 
             foreach ($uploaded_files as $file) {
 
-//                dd($file);
-
                 $uploaded_media[] = [
                     'id' => $file->id,
                     'name' => $file->name,
+                    'file_name' => $file->file_name,
                     'mime_type' => $file->mime_type,
                     'url' => $file->getFullUrl(),
                     'storage_path' => $file->getUrl(),
