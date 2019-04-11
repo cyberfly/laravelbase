@@ -144,6 +144,7 @@ Vue.component('v-example-invoice-parent', require('../../../components/examples/
 Vue.component('v-example-invoice-child', require('../../../components/examples/invoices/InvoiceChildComponent.vue'));
 
 Vue.component('v-example-upload-form', require('../../../components/examples/forms/UploadFormComponent.vue'));
+Vue.component('v-example-edit-upload-form', require('../../../components/examples/forms/EditUploadFormComponent.vue'));
 
 Vue.component('v-example-vuepagination', require('../../../components/examples/vuepaginations/VuePaginationIndexComponent.vue'));
 

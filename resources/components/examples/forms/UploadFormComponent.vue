@@ -69,6 +69,8 @@
                     .then(response => {
                         console.log('res -->', response);
 
+                        const gallery_id = response.data.data.id;
+
                         // success notification
 
                         this.$swal({
@@ -77,7 +79,10 @@
                             type: 'success',
                             confirmButtonText: 'Ok'
                         }).then(function() {
+
                             // redirect to
+
+                            window.location.href = route('examples.uploadforms.edit', gallery_id);
 
                         });
 

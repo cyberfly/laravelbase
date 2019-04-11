@@ -76,7 +76,9 @@ Route::middleware('auth')->group(function () {
         // upload forms example
 
         Route::get('uploadforms/create', 'Example\UploadFormController@create')->name('uploadforms.create');
+        Route::get('uploadforms/{upload_id}/edit', 'Example\UploadFormController@edit')->name('uploadforms.edit');
         Route::post('uploadforms', 'Example\UploadFormController@store')->name('uploadforms.store');
+        Route::put('uploadforms/{upload_id}', 'Example\UploadFormController@update')->name('uploadforms.update');
 
         // vue laravel pagination example
 
