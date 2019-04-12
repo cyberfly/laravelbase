@@ -66,6 +66,9 @@
                     return [];
                 }
             },
+            return_object: {
+                default: false,
+            },
             id: {
                 default: '',
                 type: String
@@ -138,13 +141,20 @@
 
             attached_media_id: function ()  {
 
-                // get attached_media_id array
-                const attached_media_id = this.attached_media.map(media => media.id);
+                if (this.return_object === true) {
+                    return this.attached_media;
+                }
+                else {
 
-                // get unique array of attached_media_id
-                const unique_attached_media_id = [...new Set(attached_media_id)];
+                    // get attached_media_id array
+                    const attached_media_id = this.attached_media.map(media => media.id);
 
-                return unique_attached_media_id;
+                    // get unique array of attached_media_id
+                    const unique_attached_media_id = [...new Set(attached_media_id)];
+
+                    return unique_attached_media_id;
+
+                }
             },
         },
         methods: {
