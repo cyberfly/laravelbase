@@ -152,11 +152,11 @@
             sendingEvent (file, xhr, formData) {
 
                 if (this.model_type) {
-                    formData.append('model_type', null);
+                    formData.append('model_type', this.model_type);
                 }
 
                 if (this.model_id) {
-                    formData.append('model_id', null);
+                    formData.append('model_id', this.model_id);
                 }
 
             },
