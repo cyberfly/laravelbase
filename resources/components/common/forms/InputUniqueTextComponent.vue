@@ -72,10 +72,16 @@
                     .post(route(this.api_route), query)
                     .then((response) => {
 
+                        let validated_message = response.data.data.message;
+
+                        if (validated_message) {
+                            validated_message = validated_message.replace(unique_key, this.label);
+                        }
+
                         return {
                             valid: response.data.data.valid,
                             data: {
-                                message: response.data.data.message
+                                message: validated_message
                             }
                         };
                     });

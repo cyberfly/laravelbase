@@ -31,7 +31,7 @@ trait UniqueValueCheck
 
         if ($model) {
             $valid = false;
-            $message = $unique_key . ' is already taken';
+            $message = __('validation.unique', ['attribute' => $unique_key]);
         }
         else {
             $valid = true;
