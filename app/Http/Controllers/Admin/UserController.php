@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\StoreUserRequest;
+use App\Http\Requests\Admin\UpdateUserRequest;
 use App\Http\Resources\Admin\UserResource;
 use App\Models\SpatiePermission\WebRole;
 use App\User;
@@ -99,19 +100,47 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = $this->user
+            ->with('roles')
+            ->findOrFail($id);
+
+        $roles = $this->role->all();
+
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param UpdateUserRequest $request
+     * @param  int $id
+     * @return UserResource
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $user = $this->user->findOrFail($id);
+
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+        ];
+
+        if ($request->filled('password')) {
+
+            $data = $data + [
+                    'password' => Hash::make($request->password),
+                ];
+        }
+
+        $user->update($data);
+
+        // sync roles
+
+        $user->syncRoles($request->roles);
+
+        $user->refresh();
+
+        return new UserResource($user->load('roles'));
     }
 
     /**

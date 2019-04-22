@@ -86,6 +86,7 @@ Admin Components here
  */
 
 Vue.component('create-user-component', require('../../../components/admin/users/CreateUserComponent.vue'));
+Vue.component('edit-user-component', require('../../../components/admin/users/EditUserComponent.vue'));
 Vue.component('show-user-component', require('../../../components/admin/users/ShowUserComponent.vue'));
 
 /*
