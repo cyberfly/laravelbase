@@ -27,6 +27,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('dashboard', 'Dashboard')->name('dashboard');
 
+    // Common routes
+
+    Route::get('common/users', 'Common\ReferenceController@getUsers')->name('common.reference.users');
+
     // Upload routes
 
     Route::post('uploads/{collection_name}', 'UploadController@store')->name('uploads.store');
