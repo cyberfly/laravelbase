@@ -72,3 +72,28 @@ if (! function_exists('current_user')) {
         return auth()->user();
     }
 }
+
+if (! function_exists('isSuperAdmin')) {
+    function isSuperAdmin()
+    {
+        $superadmin_roles = ['administrator'];
+
+        $current_user = auth()->user();
+
+        if (!$current_user->hasRole($superadmin_roles)) {
+            return false;
+        }
+
+        return true;
+    }
+}
+
+if (! function_exists('currentSubdomain')) {
+    function currentSubdomain()
+    {
+        $url_array = explode('.', parse_url(request()->url(), PHP_URL_HOST));
+        $subdomain = array_get($url_array, 0, null);
+
+        return $subdomain;
+    }
+}
