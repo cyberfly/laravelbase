@@ -15,6 +15,9 @@ Vue.prototype.$eventBus = new Vue();
 
 // custom mixin
 
+import Commons from '../../../assets/js/mixins/Commons';
+Vue.mixin(Commons);
+
 import Permissions from '../../../assets/js/mixins/Permissions';
 Vue.mixin(Permissions);
 
