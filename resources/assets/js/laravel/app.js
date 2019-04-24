@@ -92,6 +92,10 @@ Vue.component('create-user-component', require('../../../components/admin/users/
 Vue.component('edit-user-component', require('../../../components/admin/users/EditUserComponent.vue'));
 Vue.component('show-user-component', require('../../../components/admin/users/ShowUserComponent.vue'));
 
+Vue.component('index-role-component', require('../../../components/admin/roles/IndexRoleComponent.vue'));
+Vue.component('create-role-component', require('../../../components/admin/roles/CreateRoleComponent.vue'));
+Vue.component('edit-role-component', require('../../../components/admin/roles/EditRoleComponent.vue'));
+
 /*
  End of Admin Components
  */
@@ -123,6 +127,8 @@ Vue.component('v-media-widget', require('../../../components/common/widgets/Medi
 Vue.component('v-media-light-widget', require('../../../components/common/widgets/MediaLightWidgetComponent.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('v-ajax-loading', require('../../../components/common/loaders/AjaxLoadingComponent.vue'));
+
+Vue.component('v-html-list', require('../../../components/common/lists/HtmlListComponent.vue'));
 
 /*
  End of Common Components
