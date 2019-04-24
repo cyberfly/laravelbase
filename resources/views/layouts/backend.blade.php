@@ -228,7 +228,7 @@
                                 <i class="nav-main-link-icon si si-users"></i>
                                 <span class="nav-main-link-name">Users</span>
                             </a>
-                            <a class="nav-main-link" href="#">
+                            <a class="nav-main-link" href="{{ route('admin.roles.index') }}">
                                 <i class="nav-main-link-icon si si-user"></i>
                                 <span class="nav-main-link-name">Roles</span>
                             </a>

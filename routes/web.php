@@ -55,6 +55,21 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('users/{user_id}', 'Admin\UserController@destroy')->name('users.destroy');
 
+        // roles routes
+
+        Route::get('roles', 'Admin\RoleController@index')->name('roles.index');
+        Route::get('roles/indexdata', 'Admin\RoleController@getRoles')->name('roles.indexdata');
+
+        Route::get('roles/create', 'Admin\RoleController@create')->name('roles.create');
+        Route::get('roles/{role_id}', 'Admin\RoleController@show')->name('roles.show');
+        Route::get('roles/{role_id}/edit', 'Admin\RoleController@edit')->name('roles.edit');
+
+        Route::post('roles', 'Admin\RoleController@store')->name('roles.store');
+
+        Route::put('roles/{role_id}', 'Admin\RoleController@update')->name('roles.update');
+
+        Route::delete('roles/{role_id}', 'Admin\RoleController@destroy')->name('roles.destroy');
+
     });
 
     // Example routes
