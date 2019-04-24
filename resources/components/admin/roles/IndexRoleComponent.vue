@@ -117,6 +117,8 @@
 
             getRolesData(page = 1) {
 
+                this.$showLoading();
+
                 const params = {
                     page: page,
                     ...this.search_data
@@ -127,6 +129,8 @@
                 axios.get(url)
                     .then(response => {
                         this.role_data = response.data;
+
+                        this.$hideLoading();
                     });
             },
 
