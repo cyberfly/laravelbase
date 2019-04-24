@@ -11,7 +11,7 @@
             <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">
                 <h1 class="flex-sm-fill font-size-h2 font-w400 mt-2 mb-0 mb-sm-2">Edit Role</h1>
                 <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
-                    {{ Breadcrumbs::render('admin.users.create') }}
+                    {{ Breadcrumbs::render('admin.roles.edit', $role->id) }}
                 </nav>
             </div>
         </div>
