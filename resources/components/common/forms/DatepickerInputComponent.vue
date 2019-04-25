@@ -48,6 +48,18 @@
                 default: 'd/m/Y',
                 type: String
             },
+            min_date: {
+                default: null,
+            },
+            max_date: {
+                default: null,
+            },
+            disabled_date: {
+                type: Array,
+                default: function () {
+                    return [];
+                },
+            },
             id: {
                 default: '',
                 type: String
@@ -77,18 +89,37 @@
                     ? this.rules.includes('required')
                     : this.rules['required'];
 
-            }
+            },
+
+            config() {
+
+                let date_config = {
+                    wrap: true,
+                    altFormat: this.format,
+                    altInput: true,
+                    dateFormat: 'Y-m-d',
+                };
+
+                if (this.min_date) {
+                    date_config['minDate'] = this.min_date;
+                }
+
+                if (this.max_date) {
+                    date_config['maxDate'] = this.max_date;
+                }
+
+                if (this.disabled_date.length > 0) {
+                    date_config['disable'] = this.disabled_date;
+                }
+
+                return date_config;
+            },
+
         },
         data () {
             return {
                 date_input: this.value,
                 date: new Date(),
-                config: {
-                    wrap: true,
-                    altFormat: this.format,
-                    altInput: true,
-                    dateFormat: 'Y-m-d',
-                },
             }
         },
         watch:{
