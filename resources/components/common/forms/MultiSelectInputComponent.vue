@@ -12,6 +12,7 @@
                 :hide-selected="false"
                 :track-by="value_key"
                 :label="label_key"
+                :disabled="readonly"
                 v-validate="getValidationRules()"
                 :data-vv-name="field_name"
                 :data-vv-value-path="field_name"
@@ -43,6 +44,9 @@
             },
             label: {
                 required: true
+            },
+            readonly: {
+                default: false,
             },
             field_id: {
                 default: null,
