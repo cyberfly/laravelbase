@@ -38,6 +38,9 @@
             label: {
                 required: true,
             },
+            readonly: {
+                default: false,
+            },
             field_id: {
                 default: null,
                 type: String,
@@ -97,6 +100,7 @@
                     currencySymbol: this.currency_symbol,
                     minimumValue: '0',
                     decimalPlaces: this.precision,
+                    readOnly: this.readonly,
                 }
             }
         },
