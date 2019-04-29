@@ -3,28 +3,45 @@
         <label :for="id">{{ label }} <span v-if="isRequired" class="text-danger">*</span></label>
         <div class="input-group">
 
-            <flat-pickr
-                    v-model="date_input"
-                    :config="config"
-                    :name="field_name"
-                    v-validate="getValidationRules()"
-                    :data-vv-as="label"
-                    class="form-control"
-                    :class="{ 'is-invalid': errors.has(field_name) }"
-            ></flat-pickr>
+            <template v-if="!readonly">
 
-            <div class="input-group-append">
-                <button v-if="show_toggle" class="btn btn-outline-dark" type="button" title="Toggle" data-toggle>
-                    <i class="far fa-calendar-alt">
-                        <span aria-hidden="true" class="sr-only">Toggle</span>
-                    </i>
-                </button>
-                <button v-if="show_clear" class="btn btn-outline-secondary" type="button" title="Clear" data-clear>
-                    <i class="far fa-calendar-minus">
-                        <span aria-hidden="true" class="sr-only">Clear</span>
-                    </i>
-                </button>
-            </div>
+                <flat-pickr
+                        v-model="date_input"
+                        :config="config"
+                        :name="field_name"
+                        v-validate="getValidationRules()"
+                        :data-vv-as="label"
+                        class="form-control"
+                        :class="{ 'is-invalid': errors.has(field_name) }"
+                ></flat-pickr>
+
+                <div class="input-group-append">
+                    <button v-if="show_toggle" class="btn btn-outline-dark" type="button" title="Toggle" data-toggle>
+                        <i class="far fa-calendar-alt">
+                            <span aria-hidden="true" class="sr-only">Toggle</span>
+                        </i>
+                    </button>
+                    <button v-if="show_clear" class="btn btn-outline-secondary" type="button" title="Clear" data-clear>
+                        <i class="far fa-calendar-minus">
+                            <span aria-hidden="true" class="sr-only">Clear</span>
+                        </i>
+                    </button>
+                </div>
+
+            </template>
+
+            <template v-else>
+
+                <input :value="readonly_date"
+                       class="form-control"
+                       readonly="readonly"
+                       type="text"
+                       :name="field_name"
+                       :ref="field_name"
+                       :id="id" >
+
+            </template>
+
         </div>
         <div class="invalid-feedback">{{ errors.first(field_name) }}</div>
     </div>
@@ -43,6 +60,13 @@
             },
             label: {
                 required: true
+            },
+            readonly: {
+                default: false,
+            },
+            input_format: {
+                default: 'Y-m-d',
+                type: String
             },
             format: {
                 default: 'd/m/Y',
@@ -79,6 +103,13 @@
         },
         computed: {
 
+            readonly_date() {
+
+                let date_obj = flatpickr.parseDate(this.value, this.input_format);
+
+                return flatpickr.formatDate(date_obj, this.format);
+            },
+
             isRequired() {
 
                 if (!this.rules) {
@@ -97,7 +128,7 @@
                     wrap: true,
                     altFormat: this.format,
                     altInput: true,
-                    dateFormat: 'Y-m-d',
+                    dateFormat: this.input_format,
                 };
 
                 if (this.min_date) {
