@@ -3,6 +3,7 @@
 
         methods: {
 
+            // generate ziggy link to use in Vue template
             $linkTo(route_name, params=null) {
                 return route(route_name, params);
             },
@@ -45,6 +46,55 @@
 
                 });
             },
+
+            // show success created alert
+
+            $showSuccessCreated(label, redirect_to = null) {
+
+                const self = this;
+
+                this.$swal({
+                    title: 'Congratulation',
+                    text: label + ' has been successfully created.',
+                    type: 'success',
+                    confirmButtonText: 'Ok',
+                    timer: 2000,
+                }).then(function() {
+
+                    if (redirect_to) {
+
+                        self.$showLoading();
+
+                        window.location.href = redirect_to;
+                    }
+
+                });
+            },
+
+            // show success updated alert
+
+            $showSuccessUpdated(label, redirect_to = null) {
+
+                const self = this;
+
+                this.$swal({
+                    title: 'Congratulation',
+                    text: label + ' has been successfully updated.',
+                    type: 'success',
+                    confirmButtonText: 'Ok',
+                    timer: 2000,
+                }).then(function() {
+
+                    if (redirect_to) {
+
+                        self.$showLoading();
+
+                        window.location.href = redirect_to;
+                    }
+
+                });
+            },
+
 
         },
     };
