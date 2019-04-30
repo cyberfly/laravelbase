@@ -105,6 +105,7 @@ Vue.component('edit-role-component', require('../../../components/admin/roles/Ed
  */
 
 Vue.component('v-text', require('../../../components/common/forms/InputTextComponent.vue'));
+Vue.component('v-textarea', require('../../../components/common/forms/InputTextareaComponent.vue'));
 Vue.component('v-unique', require('../../../components/common/forms/InputUniqueTextComponent.vue'));
 Vue.component('v-ajax-select', require('../../../components/common/forms/AjaxMultiSelectInputComponent.vue'));
 Vue.component('v-select', require('../../../components/common/forms/MultiSelectInputComponent.vue'));
