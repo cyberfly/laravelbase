@@ -30,15 +30,15 @@
                 @csrf
                 <div class="form-group">
                     <div class="input-group">
-                        <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ __('E-Mail Address') }}" required autofocus>
+                        <input id="identifier" type="text" class="form-control{{ $errors->has('identifier') ? ' is-invalid' : '' }}" name="identifier" value="{{ old('identifier') }}" placeholder="{{ __('E-Mail Address or Username') }}" required autofocus>
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fa fa-user-circle"></i>
                             </span>
                         </div>
-                        @if ($errors->has('email'))
+                        @if ($errors->has('identifier'))
                             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('identifier') }}</strong>
                                     </span>
                         @endif
                     </div>

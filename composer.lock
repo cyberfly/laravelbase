@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ad24a3269936a1d86c2026ce1a543b0",
+    "content-hash": "f84a7a4415826005e3a8c4c625648b58",
     "packages": [
         {
             "name": "akaunting/money",
@@ -1707,6 +1707,53 @@
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "https://laravelcollective.com",
             "time": "2018-09-05T18:32:53+00:00"
+        },
+        {
+            "name": "laravie/authen",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravie/authen.git",
+                "reference": "6f210adebdf428e430e43cd0465cc484838519ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravie/authen/zipball/6f210adebdf428e430e43cd0465cc484838519ee",
+                "reference": "6f210adebdf428e430e43cd0465cc484838519ee",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^5.6",
+                "php": ">=7.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.0",
+                "orchestra/testbench": "^3.6",
+                "phpunit/phpunit": "^7.5 || ^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravie\\Authen\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com"
+                }
+            ],
+            "description": "User Authentication Identifiers for Laravel",
+            "time": "2019-02-21T08:10:21+00:00"
         },
         {
             "name": "lcobucci/jwt",
