@@ -130,6 +130,7 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('v-ajax-loading', require('../../../components/common/loaders/AjaxLoadingComponent.vue'));
 
 Vue.component('v-html-list', require('../../../components/common/lists/HtmlListComponent.vue'));
+Vue.component('v-header-notification', require('../../../components/common/notifications/HeaderNotificationComponent.vue'));
 
 /*
  End of Common Components
