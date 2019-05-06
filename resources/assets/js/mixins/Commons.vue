@@ -5,6 +5,11 @@
 
             // generate ziggy link to use in Vue template
             $linkTo(route_name, params=null) {
+
+                if (!params) {
+                    return route(route_name);
+                }
+
                 return route(route_name, params);
             },
 
