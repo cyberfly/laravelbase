@@ -395,6 +395,10 @@
         </div>
         <!-- END Page Container -->
 
+        <!-- laravel PHP to JS variable-->
+
+        @include('layouts.partials.js_vars')
+
         <!-- laravel-localization-to-vue JS -->
         <script>
 

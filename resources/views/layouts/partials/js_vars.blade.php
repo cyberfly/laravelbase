@@ -1,0 +1,1 @@
+{{--This blade usage is to load Laracast utilities PHP to JS variables--}}

@@ -2,12 +2,16 @@
 
 namespace App\Providers;
 
+use App\Traits\PhpToJsVars;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use ExportLocalization;
+use JavaScript;
 
 class ViewComposerServiceProvider extends ServiceProvider
 {
+    use PhpToJsVars;
+
     /**
      * Bootstrap services.
      *
@@ -15,6 +19,10 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // load PHP to JS variables
+
+        JavaScript::put($this->getPhpToJsVariables());
+
         // load Laravel Localization to Vue messages
 
         View::composer('*', function ($view) {
