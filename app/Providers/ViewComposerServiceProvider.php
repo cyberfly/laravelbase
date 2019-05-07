@@ -22,6 +22,29 @@ class ViewComposerServiceProvider extends ServiceProvider
                 'messages' => ExportLocalization::export()->toFlat(),
             ]);
         });
+
+        // load user notifications summary
+
+        View::composer('*', function ($view) {
+
+            $user = auth()->user();
+
+            if ($user) {
+                $user_notifications = $user->unreadNotifications;
+
+                $unread_count = $user_notifications->count();
+            }
+            else {
+                $user_notifications = [];
+
+                $unread_count = 0;
+            }
+
+            return $view->with([
+                'user_notifications' => $user_notifications,
+                'unread_count' => $unread_count,
+            ]);
+        });
     }
 
     /**

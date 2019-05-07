@@ -31,6 +31,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('common/users', 'Common\ReferenceController@getUsers')->name('common.reference.users');
 
+    // User notification routes
+
+    Route::get('usernotifications', 'Common\UserNotificationController@index')->name('usernotifications.index');
+    Route::get('usernotifications/{notification_id}', 'Common\UserNotificationController@show')->name('usernotifications.show');
+
     // Upload routes
 
     Route::post('uploads/{collection_name}', 'UploadController@store')->name('uploads.store');
