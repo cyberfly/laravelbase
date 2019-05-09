@@ -3,7 +3,7 @@
         <label :for="id">{{ label }} <span v-if="isRequired" class="text-danger">*</span></label>
         <textarea
                 :name="field_name"
-                :value="value"
+                :value="transformInputValue"
                 :id="id"
                 :placeholder="placeholder"
                 :readonly="readonly"
@@ -45,6 +45,10 @@
             rules: {
                 default: '',
                 type: String
+            },
+            transform: {
+                default: null,
+                type: String
             }
         },
         mounted() {
@@ -62,7 +66,12 @@
                     ? this.rules.includes('required')
                     : this.rules['required'];
 
-            }
+            },
+
+            transformInputValue() {
+                return this.transformValue(this.value);
+            },
+
         },
         methods: {
 
@@ -70,9 +79,28 @@
                 return this.rules;
             },
 
+            transformValue(value) {
+
+                if (value) {
+
+                    if (this.transform === 'uppercase') {
+                        return value.toUpperCase();
+                    }
+
+                    if (this.transform === 'lowercase') {
+                        return value.toLowerCase();
+                    }
+                }
+
+                return value;
+
+            },
+
             updateParentValue(value) {
 
-                this.$emit('input', value);
+                let transform_value = this.transformValue(value);
+
+                this.$emit('input', transform_value);
             }
         }
     }
