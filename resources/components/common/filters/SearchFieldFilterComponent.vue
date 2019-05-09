@@ -47,6 +47,10 @@
                 default: function () {
                     return [];
                 },
+            },
+            transform: {
+                default: null,
+                type: String
             }
         },
         computed: {
@@ -124,7 +128,28 @@
                 return label;
             },
 
+            transformValue(value) {
+
+                if (value) {
+
+                    if (this.transform === 'uppercase') {
+                        return value.toUpperCase();
+                    }
+
+                    if (this.transform === 'lowercase') {
+                        return value.toLowerCase();
+                    }
+                }
+
+                return value;
+
+            },
+
             updateParentValue(value) {
+
+                if (value.search) {
+                    value.search = this.transformValue(value.search);
+                }
 
                 this.$emit('input', value);
             }
