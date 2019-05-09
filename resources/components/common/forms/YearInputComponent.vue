@@ -287,4 +287,8 @@
         border-radius: 0.25rem;
     }
 
+    .multiselect.multiselect--active {
+        z-index: 10;
+    }
+
 </style>
