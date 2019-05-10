@@ -62,17 +62,6 @@
         data () {
             return {
                 notification_data: {},
-                search_data: this.getSearchData(),
-                search_options: [
-                    {
-                        key: 'name',
-                        label: 'Name',
-                    },
-                    {
-                        key: 'email',
-                        label: 'Email',
-                    },
-                ],
             }
         },
         created()
@@ -94,22 +83,6 @@
                     .then(response => {
                         this.notification_data = response.data;
                     });
-            },
-
-            getSearchValue: _.debounce(function (value) {
-                let search_value = value.search;
-
-                // perform ajax search
-
-                this.getNotificationsData();
-
-            }, 300),
-
-            getSearchData() {
-
-                let search_data = {};
-
-                return search_data;
             },
 
             notificationStyle(type) {
