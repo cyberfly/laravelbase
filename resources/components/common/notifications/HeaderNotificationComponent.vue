@@ -30,7 +30,7 @@
             </div>
             <div class="p-2 border-top">
                 <a class="btn btn-light btn-block text-center" :href="$linkTo('usernotifications.index')">
-                    <i class="fa fa-fw fa-eye mr-1"></i> View All
+                    <i class="fa fa-fw fa-eye mr-1"></i> {{ trans.get('labels.view_all') }}
                 </a>
             </div>
         </div>
