@@ -29,4 +29,18 @@ return [
     // action label
 
     'loading' => 'Loading ...',
+    'action' => 'Action',
+    'view' => 'View',
+    'view_all' => 'View All',
+
+    // specific label
+
+    'notification_list' => 'Notification List',
+    'already_read' => 'Read',
+
+    // general label
+
+    'list' => 'List',
+    'detail' => 'Detail',
+    'date' => 'Date',
 ];

@@ -29,4 +29,18 @@ return [
     // action label
 
     'loading' => 'Sedang Proses ...',
+    'action' => 'Tindakan',
+    'view' => 'Lihat',
+    'view_all' => 'Lihat Semua',
+
+    // specific label
+
+    'notification_list' => 'Senarai Pemberitahuan',
+    'already_read' => 'Telah Dibaca',
+
+    // general label
+
+    'list' => 'Senarai',
+    'detail' => 'Butiran',
+    'date' => 'Tarikh',
 ];
