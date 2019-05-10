@@ -13,6 +13,25 @@
                 return route(route_name, params);
             },
 
+            // date time Malaysia format
+
+            $myDateTime(datetime) {
+                return moment(datetime, 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY HH:mm:ss');
+            },
+
+            // date Malaysia format
+
+            $myDate(datetime) {
+                return moment(datetime, 'YYYY-MM-DD HH:mm:ss').format('DD/MM/YYYY');
+            },
+
+            // time ago
+
+            $timeAgo(date) {
+                let time_ago = moment(date).locale(window.default_locale).fromNow();
+                return time_ago;
+            },
+
             // show confirmation to delete Vue generated row
             $showDeleteForm(id, index) {
 
