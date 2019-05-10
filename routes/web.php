@@ -34,6 +34,7 @@ Route::middleware('auth')->group(function () {
     // User notification routes
 
     Route::get('usernotifications', 'Common\UserNotificationController@index')->name('usernotifications.index');
+    Route::get('usernotifications/indexdata', 'Common\UserNotificationController@getUserNotifications')->name('usernotifications.indexdata');
     Route::get('usernotifications/{notification_id}', 'Common\UserNotificationController@show')->name('usernotifications.show');
 
     // Upload routes

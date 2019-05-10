@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Common;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Common\UserNotificationResource;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\DatabaseNotification;
 
@@ -16,9 +17,7 @@ class UserNotificationController extends Controller
 
     public function index()
     {
-        $user_notifications = auth()->user()->notifications;
-
-        return $user_notifications;
+        return view('usernotifications.index');
     }
 
     public function show($id)
@@ -39,5 +38,12 @@ class UserNotificationController extends Controller
                 return redirect($action_url);
             }
         }
+    }
+
+    public function getUserNotifications()
+    {
+        $user_notifications = auth()->user()->notifications()->result();
+
+        return new UserNotificationResource($user_notifications);
     }
 }

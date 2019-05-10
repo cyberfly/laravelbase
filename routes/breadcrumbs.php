@@ -45,3 +45,9 @@ Breadcrumbs::for('admin.roles.edit', function ($trail, $role_id) {
     $trail->parent('admin.roles.index');
     $trail->push('Edit Role', route('admin.roles.edit', $role_id));
 });
+
+// notifications
+
+Breadcrumbs::for('usernotifications.index', function ($trail) {
+    $trail->push(__('labels.notifications'), route('usernotifications.index'));
+});
