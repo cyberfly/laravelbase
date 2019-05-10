@@ -71,6 +71,12 @@ import loading from 'vue-full-loading';
 
 Vue.component('loading', loading);
 
+// use Vue Content Loading
+
+import { VclTable } from 'vue-content-loading';
+
+Vue.component('v-table-loader', VclTable);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

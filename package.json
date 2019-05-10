@@ -34,6 +34,7 @@
         "urijs": "^1.19.1",
         "vee-validate": "^2.1.5",
         "vue-autonumeric": "^1.2.6",
+        "vue-content-loading": "^1.6.0",
         "vue-flatpickr-component": "^8.1.1",
         "vue-full-loading": "^1.2.1",
         "vue-multiselect": "^2.1.3",
