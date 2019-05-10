@@ -8,15 +8,24 @@
             </div>
             <div class="block-content">
 
-                <table class="table table-striped table-borderless table-vcenter">
-                    <thead class="thead-light">
-                    <tr>
-                        <th colspan="2">{{ trans.get('labels.detail') }}</th>
-                        <th>{{ trans.get('labels.date') }}</th>
-                        <th class="text-center" style="width: 100px;">{{ trans.get('labels.action') }}</th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                <template v-if="showLoading">
+                    <v-table-loader
+                            :rows="5"
+                            :columns="3"
+                    ></v-table-loader>
+                </template>
+
+                <template v-else>
+
+                    <table class="table table-striped table-borderless table-vcenter">
+                        <thead class="thead-light">
+                        <tr>
+                            <th colspan="2">{{ trans.get('labels.detail') }}</th>
+                            <th>{{ trans.get('labels.date') }}</th>
+                            <th class="text-center" style="width: 100px;">{{ trans.get('labels.action') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
                         <tr v-for="(notification, index) in notification_data.data" :key="notification.id">
                             <td class="text-center" style="width: 65px;">
@@ -38,10 +47,12 @@
                             </td>
                         </tr>
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
-                <pagination :data="notification_data" @pagination-change-page="getNotificationsData"></pagination>
+                    <pagination :data="notification_data" @pagination-change-page="getNotificationsData"></pagination>
+
+                </template>
 
             </div>
         </div>
@@ -62,6 +73,7 @@
         data () {
             return {
                 notification_data: {},
+                showLoading: false,
             }
         },
         created()
@@ -79,8 +91,13 @@
 
                 const url = route('usernotifications.indexdata', params);
 
+                this.showLoading =  true;
+
                 axios.get(url)
                     .then(response => {
+
+                        this.showLoading =  false;
+
                         this.notification_data = response.data;
                     });
             },
