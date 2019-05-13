@@ -97,3 +97,28 @@ if (! function_exists('currentSubdomain')) {
         return $subdomain;
     }
 }
+
+if (! function_exists('logActivity')) {
+
+    /**
+     * Helper for Spatie Activity log
+     * @param string $log_name
+     * @param $description
+     * @param null $model
+     * @param null $user
+     */
+    function logActivity($log_name='default', $description, $model=null, $user=null)
+    {
+        $activity = activity($log_name);
+
+        if ($model) {
+            $activity = $activity->performedOn($model);
+        }
+
+        if ($user) {
+            $activity = $activity->by($user);
+        }
+
+        $activity->log($description);
+    }
+}
