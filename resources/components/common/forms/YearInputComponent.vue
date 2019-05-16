@@ -34,7 +34,7 @@
                 type: Number
             },
             end: {
-                default: null,
+                default: new Date().getFullYear(),
                 type: Number
             },
             order: {
