@@ -53,7 +53,7 @@
                 default: this.field_name,
             },
             rules: {
-                default: '',
+                default: null,
                 type: String
             },
             transform: {
@@ -140,9 +140,11 @@
 
                 // append another validation rules
 
-                this.rules.split("|").forEach(function (rule) {
-                    validation_rules[rule] = true;
-                });
+                if (this.rules) {
+                    this.rules.split("|").forEach(function (rule) {
+                        validation_rules[rule] = true;
+                    });
+                }
 
                 return validation_rules;
 
