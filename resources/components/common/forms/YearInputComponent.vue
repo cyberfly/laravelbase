@@ -209,8 +209,6 @@
                     }
                     else {
 
-                        console.log(this.options_data);
-
                         const selected_object = this.getObjectByValue(this.options_data, this.value_key, this.value);
 
                         if (typeof selected_object !== 'undefined') {
