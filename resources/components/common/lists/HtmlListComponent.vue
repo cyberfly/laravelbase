@@ -3,7 +3,9 @@
     <div>
 
         <ul class="v-html-list">
-            <li class="" v-for="(row, index) in list_data_excerpt" :key="index" >{{ row[label_key] }}</li>
+            <li class="" v-for="(row, index) in list_data_excerpt" :key="index" >
+                <span class="badge badge-info">{{ row[label_key] }}</span>
+            </li>
         </ul>
 
         <template v-if="list_data_balance > 0">
@@ -99,6 +101,7 @@
 
     .v-html-list {
         list-style: none;
+        padding-left: 0px;
     }
 
 </style>
