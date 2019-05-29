@@ -3,6 +3,30 @@
 
         methods: {
 
+            // show success alert
+
+            $showSuccess(message, redirect_to = null) {
+
+                const self = this;
+
+                this.$swal({
+                    title: 'Tahniah',
+                    text: message,
+                    type: 'success',
+                    confirmButtonText: 'Ok',
+                    timer: 2000,
+                }).then(function() {
+
+                    if (redirect_to) {
+
+                        self.$showLoading();
+
+                        window.location.href = redirect_to;
+                    }
+
+                });
+            },
+
             // show confirmation to delete Vue generated row
             $showDeleteForm(id, index) {
 
