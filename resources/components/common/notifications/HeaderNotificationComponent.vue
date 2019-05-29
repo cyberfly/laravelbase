@@ -17,7 +17,7 @@
                         </div>
                         <div class="media-body font-size-sm pr-2">
                             <div class="font-w600">{{ notification.data.message }}</div>
-                            <div class="text-muted font-italic">{{ timeAgo(notification.created_at) }}</div>
+                            <div class="text-muted font-italic">{{ $timeAgo(notification.created_at) }}</div>
                         </div>
                     </a>
                 </li>
@@ -64,11 +64,6 @@
 
         },
         methods: {
-
-            timeAgo(date) {
-                let time_ago = moment(date).fromNow();
-                return time_ago;
-            },
 
             viewNotification() {
                 this.decreaseUnreadCount();
