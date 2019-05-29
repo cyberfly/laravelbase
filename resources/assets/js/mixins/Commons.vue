@@ -32,93 +32,17 @@
                 return time_ago;
             },
 
-            // show confirmation to delete Vue generated row
-            $showDeleteForm(id, index) {
+            // reset form
 
-                this.$swal({
-                    title: 'Are you sure to delete this record?',
-                    text: 'This action cannot be undo.',
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonText: 'Yes',
-                    cancelButtonText: 'Cancel',
-                    showLoaderOnConfirm: true,
-                }).then((result) => {
+            $resetForm(obj) {
 
-                    if(result.value) {
-
-                        this.destroy(id, index);
-                    } else {
-
+                for (let key in obj) {
+                    if (obj.hasOwnProperty(key)) {
+                        obj[key] = null;
                     }
-                });
+                }
 
             },
-
-            // show success deleted alert
-
-            $showSuccessDeleted(label) {
-
-                this.$swal({
-                    title: 'Deleted',
-                    text: label + ' was successfully deleted.',
-                    type: 'success',
-                    confirmButtonText: 'Ok',
-                    timer: 2000,
-                }).then(function() {
-
-
-                });
-            },
-
-            // show success created alert
-
-            $showSuccessCreated(label, redirect_to = null) {
-
-                const self = this;
-
-                this.$swal({
-                    title: 'Congratulation',
-                    text: label + ' has been successfully created.',
-                    type: 'success',
-                    confirmButtonText: 'Ok',
-                    timer: 2000,
-                }).then(function() {
-
-                    if (redirect_to) {
-
-                        self.$showLoading();
-
-                        window.location.href = redirect_to;
-                    }
-
-                });
-            },
-
-            // show success updated alert
-
-            $showSuccessUpdated(label, redirect_to = null) {
-
-                const self = this;
-
-                this.$swal({
-                    title: 'Congratulation',
-                    text: label + ' has been successfully updated.',
-                    type: 'success',
-                    confirmButtonText: 'Ok',
-                    timer: 2000,
-                }).then(function() {
-
-                    if (redirect_to) {
-
-                        self.$showLoading();
-
-                        window.location.href = redirect_to;
-                    }
-
-                });
-            },
-
 
         },
     };

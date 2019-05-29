@@ -18,6 +18,9 @@ Vue.prototype.$eventBus = new Vue();
 import Commons from '../../../assets/js/mixins/Commons';
 Vue.mixin(Commons);
 
+import Alerts from '../../../assets/js/mixins/Alerts';
+Vue.mixin(Alerts);
+
 import Permissions from '../../../assets/js/mixins/Permissions';
 Vue.mixin(Permissions);
 
