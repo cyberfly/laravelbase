@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Models\{{namespace}};
+
+use App\Traits\Filterable;
+use App\Traits\Override\Cachable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Database\Eloquent\Model;
+
+class {{modelName}} extends Model implements Auditable
+{
+    use SoftDeletes;
+    use Filterable;
+    use \OwenIt\Auditing\Auditable;
+
+    protected $fillable = [
+
+    ];
+
+    /*
+     * Model scopes here
+     * */
+
+
+
+    /*
+     * End of Model scopes here
+     * */
+
+    /*
+     * Model relationships here
+     * */
+
+
+
+    /*
+     * End of Model relationships here
+     * */
+}

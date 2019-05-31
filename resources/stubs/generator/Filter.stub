@@ -1,0 +1,89 @@
+<?php
+
+namespace App\Filters\{{namespace}};
+
+use App\Filters\QueryFilters;
+use Illuminate\Database\Eloquent\Builder;
+
+class {{modelName}}Filter extends QueryFilters
+{
+    /**
+     * Filter by title / code / description
+     *
+     * @param $search
+     * @return Builder
+     */
+    public function search($search)
+    {
+        $search_type = request()->get('search_type');
+
+        return $this->builder
+            ->where(function ($query) use ($search, $search_type) {
+
+                if (!empty($search_type)) {
+
+                    if ($search_type === 'code') {
+                        if (!empty($search)) {
+                            $query
+                                ->where($search_type, $search);
+                        }
+                    }
+                    else {
+                        $query
+                            ->where($search_type, 'like', '%' . $search . '%');
+                    }
+                }
+                else {
+
+                    $query
+                        ->orWhere('title', 'like', '%' . $search . '%')
+                        ->orWhere('code',  'like', '%' . $search . '%')
+                        ->orWhere('description',  'like', '%' . $search . '%');
+                }
+            });
+    }
+
+    /**
+     * Filter by code
+     *
+     * @param  string $code
+     * @return Builder
+     */
+    public function code($code)
+    {
+        return $this->builder->where('code', $code);
+    }
+
+    /**
+     * Filter by title
+     *
+     * @param  string $title
+     * @return Builder
+     */
+    public function title($title)
+    {
+        return $this->builder->where('title', 'like', '%' . $title . '%');
+    }
+
+    /**
+     * Filter by description
+     *
+     * @param  string $description
+     * @return Builder
+     */
+    public function description($description)
+    {
+        return $this->builder->where('description', 'like', '%' . $description . '%');
+    }
+
+    /**
+     * Filter by latest.
+     *
+     * @param  string $order
+     * @return Builder
+     */
+    public function latest($order = 'desc')
+    {
+        return $this->builder->orderBy('created_at', $order);
+    }
+}

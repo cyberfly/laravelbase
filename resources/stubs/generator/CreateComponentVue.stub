@@ -1,0 +1,97 @@
+<template>
+
+    <!-- Form -->
+
+    <form @submit.prevent="handleSubmit">
+
+        <v-validation-alert :submitted="submitted"></v-validation-alert>
+
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                <v-text
+                    v-model="{{modelNameSingularLowerCase}}_data.title"
+                    :field_name="'title'"
+                    :label="'Title'"
+                    :rules="'required'"
+                    :transform="'uppercase'"
+                ></v-text>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">{{ trans.get('labels.submit') }}</button>
+        </div>
+
+    </form>
+
+    <!-- END Form -->
+</template>
+
+<script>
+
+    export default {
+        props: {
+
+        },
+        mounted () {
+
+        },
+        created () {
+
+        },
+        computed: {
+
+        },
+        data () {
+            return {
+                {{modelNameSingularLowerCase}}_data: {
+                    title: null,
+                },
+                submitted: false,
+            }
+        },
+        methods: {
+
+            handleSubmit(e) {
+
+                this.submitted = true;
+
+                console.log('{{modelNameSingularLowerCase}}: ', JSON.stringify(this.{{modelNameSingularLowerCase}}_data, null, 2));
+
+                this.$validator.validate().then(valid => {
+                    if (valid) {
+                        this.store();
+                    }
+                    else {
+                        // scroll to top
+
+                        window.scrollTo(0,0);
+                    }
+                });
+            },
+
+            store() {
+
+                this.$showLoading();
+
+                axios
+                    .post(route('{{routeNamespace}}.{{modelNamePluralLowerCase}}.store'), this.{{modelNameSingularLowerCase}}_data)
+                    .then(response => {
+
+                        this.$hideLoading();
+
+                        console.log('res -->', response);
+
+                        // success notification
+
+                        this.$showSuccessCreated('{{modelName}}', route('{{routeNamespace}}.{{modelNamePluralLowerCase}}.index'));
+
+                    })
+                    .catch(function (error) {
+                        console.log('error res -->', error);
+                    });
+
+            }
+        }
+    }
+</script>

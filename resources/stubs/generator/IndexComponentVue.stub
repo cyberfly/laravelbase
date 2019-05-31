@@ -1,0 +1,170 @@
+<template>
+
+    <div>
+
+        <div class="block block-rounded block-bordered">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">{{modelName}} List</h3>
+            </div>
+            <div class="block-content">
+
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+
+                        <v-search-field
+                            v-model="search_data"
+                            :label="'Keyword'"
+                            :placeholder="'Enter'"
+                            :search_options="search_options"
+                            @input="getSearchValue"
+                        >
+                        </v-search-field>
+
+                    </div>
+
+                </div>
+
+                <template v-if="showLoading">
+                    <v-table-loader
+                        :rows="5"
+                        :columns="3"
+                    ></v-table-loader>
+                </template>
+
+                <template v-else>
+
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th class="text-center" style="width: 100px;">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr v-for="({{modelNameSingularLowerCase}}, index) in {{modelNameSingularLowerCase}}_data.data" :key="{{modelNameSingularLowerCase}}.id">
+                            <td>
+                                {{ {{modelNameSingularLowerCase}}.id }}
+                            </td>
+                            <td>
+                                {{ {{modelNameSingularLowerCase}}.name }}
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <a :href="$linkTo('{{routeNamespace}}.{{modelNamePluralLowerCase}}.edit', {{modelNameSingularLowerCase}}.id)" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Edit">
+                                        <i class="fa fa-pencil-alt"></i>
+                                    </a>
+                                    <button v-if="false" @click="$showDeleteForm({{modelNameSingularLowerCase}}.id, index)" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    <pagination :data="{{modelNameSingularLowerCase}}_data" @pagination-change-page="get{{modelNamePlural}}Data"></pagination>
+
+                </template>
+
+            </div>
+        </div>
+
+    </div>
+
+</template>
+
+<script>
+
+    export default {
+        props: {
+
+        },
+        mounted() {
+            this.get{{modelNamePlural}}Data();
+        },
+        data () {
+            return {
+                {{modelNameSingularLowerCase}}_data: {},
+                search_data: this.getSearchData(),
+                search_options: [
+                    {
+                        key: 'title',
+                        label: 'Title',
+                    },
+                ],
+                showLoading: false,
+            }
+        },
+        created()
+        {
+
+        },
+        methods: {
+
+            get{{modelNamePlural}}Data(page = 1) {
+
+                const params = {
+                    page: page,
+                    ...this.search_data
+                };
+
+                const url = route('{{routeNamespace}}.{{modelNamePluralLowerCase}}.indexdata', params);
+
+                this.showLoading =  true;
+
+                axios
+                    .get(url)
+                    .then(response => {
+
+                        this.showLoading =  false;
+
+                        this.{{modelNameSingularLowerCase}}_data = response.data;
+                    });
+            },
+
+            getSearchValue: _.debounce(function (value) {
+                let search_value = value.search;
+
+                // perform ajax search
+
+                this.get{{modelNamePlural}}Data();
+
+            }, 300),
+
+            getSearchData() {
+
+                let search_data = {};
+
+                return search_data;
+            },
+
+            destroy(id, index) {
+
+                this.$showLoading();
+
+                axios
+                    .delete(route('{{routeNamespace}}.{{modelNamePluralLowerCase}}.destroy', id))
+                    .then(response => {
+
+                    this.$hideLoading();
+
+                // delete row
+                this.{{modelNameSingularLowerCase}}_data.data.splice(index, 1);
+
+                // success notification
+
+                this.$showSuccessDeleted('Pengguna');
+
+            })
+            .catch(function (error) {
+                    console.log('error res -->', error);
+                });
+            },
+
+        }
+    }
+</script>

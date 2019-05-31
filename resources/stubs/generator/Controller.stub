@@ -1,0 +1,187 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Filters\{{namespace}}\{{modelName}}Filter;
+use App\Http\Requests\{{namespace}}\Store{{modelName}}Request;
+use App\Http\Requests\{{namespace}}\Update{{modelName}}Request;
+use App\Http\Resources\{{namespace}}\{{modelName}}Resource;
+use App\Models\{{namespace}}\{{modelName}};
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
+use App\Http\Controllers\Controller;
+
+class {{modelName}}Controller extends Controller
+{
+    protected ${{modelNameSingularLowerCase}};
+
+    public function __construct(
+        {{modelName}} ${{modelNameSingularLowerCase}}
+    ) {
+        $this->{{modelNameSingularLowerCase}} = ${{modelNameSingularLowerCase}};
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return View
+     */
+    public function index()
+    {
+        return view('aset.{{modelNamePluralLowerCase}}.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return View
+     */
+    public function create()
+    {
+        return view('aset.{{modelNamePluralLowerCase}}.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Store{{modelName}}Request $request
+     * @return {{modelName}}Resource
+     */
+    public function store(Store{{modelName}}Request $request)
+    {
+        ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}->create($request->all());
+
+        return new {{modelName}}Resource(${{modelNameSingularLowerCase}}->load($this->getRelationship()));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function show($id)
+    {
+        ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}
+                ->with($this->getRelationship())
+                ->findOrFail($id);
+
+        return view('aset.{{modelNamePluralLowerCase}}.show', compact('{{modelNameSingularLowerCase}}'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function edit($id)
+    {
+        ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}
+                ->with($this->getRelationship())
+                ->findOrFail($id);
+
+        return view('aset.{{modelNamePluralLowerCase}}.edit', compact('{{modelNameSingularLowerCase}}'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Update{{modelName}}Request $request
+     * @param  int $id
+     * @return {{modelName}}Resource
+     */
+    public function update(Update{{modelName}}Request $request, $id)
+    {
+        ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}->findOrFail($id);
+
+        ${{modelNameSingularLowerCase}}->update($request->all());
+
+        ${{modelNameSingularLowerCase}}->refresh();
+
+        return new {{modelName}}Resource(${{modelNameSingularLowerCase}}->load($this->getRelationship()));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}->findOrFail($id);
+
+        ${{modelNameSingularLowerCase}}->delete();
+
+        return response(null, 204);
+    }
+
+    /**
+     * Data for index ajax request
+     * @param Request $request
+     * @param {{modelName}}Filter $filter
+     * @return {{modelName}}Resource
+     */
+    public function indexData(Request $request, {{modelName}}Filter $filter)
+    {
+        ${{modelNamePluralLowerCase}} = $this->get{{modelName}}Details($filter);
+
+        return new {{modelName}}Resource(${{modelNamePluralLowerCase}});
+    }
+
+    /**
+     * Print index
+     * @param Request $request
+     * @param {{modelName}}Filter $filter
+     * @return View
+     */
+    public function printIndex(Request $request, {{modelName}}Filter $filter)
+    {
+        ${{modelNamePluralLowerCase}} = $this->get{{modelName}}Details($filter);
+
+        return view('aset.{{modelNamePluralLowerCase}}.print', compact('{{modelNamePluralLowerCase}}'));
+    }
+
+    /**
+     * Export index as PDF
+     * @param Request $request
+     * @param {{modelName}}Filter $filter
+     * @return mixed
+     */
+    public function pdfIndex(Request $request, {{modelName}}Filter $filter)
+    {
+        ${{modelNamePluralLowerCase}} = $this->get{{modelName}}Details($filter);
+
+        $filename = '{{modelName}}_List_' . date('YmdHi') .'.pdf';
+
+        $pdf = \PDF::loadView('aset.{{modelNamePluralLowerCase}}.pdf', compact('{{modelNamePluralLowerCase}}'));
+
+        return $pdf
+            ->setPaper('a4', 'landscape')
+            ->download($filename);
+    }
+
+    /**
+     * Get data for index usage
+     * @param $filter
+     * @return mixed
+     */
+    protected function get{{modelName}}Details($filter)
+    {
+        ${{modelNamePluralLowerCase}} = $this->{{modelNameSingularLowerCase}}
+            ->with($this->getRelationship())
+            ->filter($filter)
+            ->latest()
+            ->result();
+
+        return ${{modelNamePluralLowerCase}};
+    }
+
+    protected function getRelationship()
+    {
+        return [
+
+        ];
+    }
+}
