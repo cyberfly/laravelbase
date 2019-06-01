@@ -68,8 +68,8 @@ class LaravelCrudGenerator extends Command
     {
         $name = $this->argument('name');
 
-        $this->generateController($name);
         $this->generateModel($name);
+        $this->generateController($name);
         $this->generateRequest($name);
         $this->generateResource($name);
         $this->generateFilter($name);
@@ -88,14 +88,30 @@ class LaravelCrudGenerator extends Command
     {
         $modelTemplate = $this->getTemplate($name, 'Model');
 
-        file_put_contents(app_path("Models/" . $this->getNamespace() . "/{$name}.php"), $modelTemplate);
+        $folderPath = app_path('Models/' . $this->getNamespace());
+
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/{$name}.php";
+
+        file_put_contents($filePath, $modelTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function generateController($name)
     {
         $controllerTemplate = $this->getTemplate($name, 'Controller');
 
-        file_put_contents(app_path("/Http/Controllers/" . $this->getNamespace() . "/{$name}Controller.php"), $controllerTemplate);
+        $folderPath = app_path('Http/Controllers/' . $this->getNamespace());
+
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/{$name}Controller.php";
+
+        file_put_contents($filePath, $controllerTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function generateRequest($name)
@@ -108,14 +124,30 @@ class LaravelCrudGenerator extends Command
     {
         $resourceTemplate = $this->getTemplate($name, 'Resource');
 
-        file_put_contents(app_path("Http/Resources/" . $this->getNamespace() . "/{$name}Resource.php"), $resourceTemplate);
+        $folderPath = app_path('Http/Resources/' . $this->getNamespace());
+
+        $this->makeDirIfNotExist(app_path('Http/Resources/' . $this->getNamespace()));
+
+        $filePath = $folderPath . "/{$name}Resource.php";
+
+        file_put_contents($filePath, $resourceTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function generateFilter($name)
     {
         $filterTemplate = $this->getTemplate($name, 'Filter');
 
-        file_put_contents(app_path("Filters/" . $this->getNamespace() . "/{$name}Filter.php"), $filterTemplate);
+        $folderPath = app_path('Filters/' . $this->getNamespace());
+
+        $this->makeDirIfNotExist(app_path('Filters/' . $this->getNamespace()));
+
+        $filePath = $folderPath . "/{$name}Filter.php";
+
+        file_put_contents($filePath, $filterTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function generateBlade($name)
@@ -136,87 +168,131 @@ class LaravelCrudGenerator extends Command
     {
         $requestTemplate = $this->getTemplate($name, 'StoreRequest');
 
-        if(!file_exists($path = app_path('/Http/Requests/' . $this->getNamespace())))
-            mkdir($path, 0777, true);
+        $folderPath = app_path('Http/Requests/' . $this->getNamespace());
 
-        file_put_contents(app_path("/Http/Requests/" . $this->getNamespace() . "/Store{$name}Request.php"), $requestTemplate);
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/Store{$name}Request.php";
+
+        file_put_contents($filePath, $requestTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function writeUpdateRequest($name)
     {
         $requestTemplate = $this->getTemplate($name, 'UpdateRequest');
 
-        if(!file_exists($path = app_path('/Http/Requests/' . $this->getNamespace())))
-            mkdir($path, 0777, true);
+        $folderPath = app_path('Http/Requests/' . $this->getNamespace());
 
-        file_put_contents(app_path("/Http/Requests/" . $this->getNamespace() . "/Update{$name}Request.php"), $requestTemplate);
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/Update{$name}Request.php";
+
+        file_put_contents($filePath, $requestTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function writeIndexBlade($name)
     {
         $bladeTemplate = $this->getTemplate($name, 'IndexBlade');
 
-        if(!file_exists($path = resource_path('views/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)))))
-            mkdir($path, 0777, true);
+        $folderPath = resource_path('views/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)));
 
-        file_put_contents(resource_path("views/" . $this->getViewNamespace() . "/" . strtolower(str_plural($name)) . "/index.blade.php"), $bladeTemplate);
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/index.blade.php";
+
+        file_put_contents($filePath, $bladeTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function writeCreateBlade($name)
     {
         $bladeTemplate = $this->getTemplate($name, 'CreateBlade');
 
-        if(!file_exists($path = resource_path('views/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)))))
-            mkdir($path, 0777, true);
+        $folderPath = resource_path('views/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)));
 
-        file_put_contents(resource_path("views/" . $this->getViewNamespace() . "/" . strtolower(str_plural($name)) . "/create.blade.php"), $bladeTemplate);
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/create.blade.php";
+
+        file_put_contents($filePath, $bladeTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function writeEditBlade($name)
     {
         $bladeTemplate = $this->getTemplate($name, 'EditBlade');
 
-        if(!file_exists($path = resource_path('views/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)))))
-            mkdir($path, 0777, true);
+        $folderPath = resource_path('views/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)));
 
-        file_put_contents(resource_path("views/" . $this->getViewNamespace() . "/" . strtolower(str_plural($name)) . "/edit.blade.php"), $bladeTemplate);
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/edit.blade.php";
+
+        file_put_contents($filePath, $bladeTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function writeIndexComponent($name)
     {
         $vueTemplate = $this->getTemplate($name, 'IndexComponentVue');
 
-        if(!file_exists($path = resource_path('components/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)))))
-            mkdir($path, 0777, true);
+        $folderPath = resource_path('components/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)));
 
-        file_put_contents(resource_path("components/" . $this->getViewNamespace() . "/" . strtolower(str_plural($name)) . "/Index{$name}Component.vue"), $vueTemplate);
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/Index{$name}Component.vue";
+
+        file_put_contents($filePath, $vueTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function writeCreateComponent($name)
     {
         $vueTemplate = $this->getTemplate($name, 'CreateComponentVue');
 
-        if(!file_exists($path = resource_path('components/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)))))
-            mkdir($path, 0777, true);
+        $folderPath = resource_path('components/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)));
 
-        file_put_contents(resource_path("components/" . $this->getViewNamespace() . "/" . strtolower(str_plural($name)) . "/Create{$name}Component.vue"), $vueTemplate);
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/Create{$name}Component.vue";
+
+        file_put_contents($filePath, $vueTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function writeEditComponent($name)
     {
         $vueTemplate = $this->getTemplate($name, 'EditComponentVue');
 
-        if(!file_exists($path = resource_path('components/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)))))
-            mkdir($path, 0777, true);
+        $folderPath = resource_path('components/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)));
 
-        file_put_contents(resource_path("components/" . $this->getViewNamespace() . "/" . strtolower(str_plural($name)) . "/Edit{$name}Component.vue"), $vueTemplate);
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/Edit{$name}Component.vue";
+
+        file_put_contents($filePath, $vueTemplate);
+
+        $this->info("$filePath generated");
     }
 
     protected function writeRoute($name)
     {
         $routes = $this->getRoutes($name);
 
-        File::append(base_path('routes/' . $this->getRouteFile()), $routes);
+        $filePath = base_path('routes/' . $this->getRouteFile());
+
+        File::append($filePath, $routes);
+
+        $this->info("$filePath updated");
     }
 
     protected function getTemplate($name, $stub)
@@ -244,9 +320,16 @@ class LaravelCrudGenerator extends Command
         return $template;
     }
 
+    protected function makeDirIfNotExist($path)
+    {
+        if(!file_exists($path))
+            mkdir($path, 0777, true);
+    }
+
     protected function getRoutes($name)
     {
-        $routes = 'Route::resource(\'' . str_plural(strtolower($name)) . "', '{$name}Controller');";
+        $routes = '
+        Route::resource(\'' . str_plural(strtolower($name)) . "', '{$name}Controller');";
 
         return $routes;
     }
