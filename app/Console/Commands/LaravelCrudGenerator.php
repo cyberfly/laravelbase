@@ -80,6 +80,7 @@ class LaravelCrudGenerator extends Command
         $this->generateRequest($name);
         $this->generateResource($name);
         $this->generateFilter($name);
+        $this->generatePolicy($name);
         $this->generateBlade($name);
         $this->generateVueComponent($name);
 
@@ -155,6 +156,21 @@ class LaravelCrudGenerator extends Command
         $filePath = $folderPath . "/{$name}Filter.php";
 
         file_put_contents($filePath, $filterTemplate);
+
+        $this->info("$filePath generated");
+    }
+
+    protected function generatePolicy($name)
+    {
+        $policyTemplate = $this->getTemplate($name, 'Policy');
+
+        $folderPath = app_path('Policies/' . $this->getNamespace());
+
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/{$name}Policy.php";
+
+        file_put_contents($filePath, $policyTemplate);
 
         $this->info("$filePath generated");
     }
