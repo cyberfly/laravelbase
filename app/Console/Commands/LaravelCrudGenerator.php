@@ -136,7 +136,7 @@ class LaravelCrudGenerator extends Command
 
         $folderPath = app_path('Http/Resources/' . $this->getNamespace());
 
-        $this->makeDirIfNotExist(app_path('Http/Resources/' . $this->getNamespace()));
+        $this->makeDirIfNotExist($folderPath);
 
         $filePath = $folderPath . "/{$name}Resource.php";
 
@@ -151,7 +151,7 @@ class LaravelCrudGenerator extends Command
 
         $folderPath = app_path('Filters/' . $this->getNamespace());
 
-        $this->makeDirIfNotExist(app_path('Filters/' . $this->getNamespace()));
+        $this->makeDirIfNotExist($folderPath);
 
         $filePath = $folderPath . "/{$name}Filter.php";
 
