@@ -28,6 +28,8 @@ class {{modelName}}Controller extends Controller
      */
     public function index()
     {
+        $this->authorize('index', {{modelName}}::class);
+
         return view('aset.{{modelNamePluralLowerCase}}.index');
     }
 
@@ -38,6 +40,8 @@ class {{modelName}}Controller extends Controller
      */
     public function create()
     {
+        $this->authorize('create', {{modelName}}::class);
+
         return view('aset.{{modelNamePluralLowerCase}}.create');
     }
 
@@ -49,7 +53,15 @@ class {{modelName}}Controller extends Controller
      */
     public function store(Store{{modelName}}Request $request)
     {
+        $this->authorize('create', {{modelName}}::class);
+
         ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}->create($request->all());
+
+        // log activity
+
+        activity()
+            ->performedOn(${{modelNameSingularLowerCase}})
+            ->log('CREATE {{modelNameUpperCase}}' . ${{modelNameSingularLowerCase}}->id);
 
         return new {{modelName}}Resource(${{modelNameSingularLowerCase}}->load($this->getRelationship()));
     }
@@ -66,6 +78,8 @@ class {{modelName}}Controller extends Controller
                 ->with($this->getRelationship())
                 ->findOrFail($id);
 
+        $this->authorize('show', ${{modelNameSingularLowerCase}});
+
         return view('aset.{{modelNamePluralLowerCase}}.show', compact('{{modelNameSingularLowerCase}}'));
     }
 
@@ -81,6 +95,8 @@ class {{modelName}}Controller extends Controller
                 ->with($this->getRelationship())
                 ->findOrFail($id);
 
+        $this->authorize('update', ${{modelNameSingularLowerCase}});
+
         return view('aset.{{modelNamePluralLowerCase}}.edit', compact('{{modelNameSingularLowerCase}}'));
     }
 
@@ -95,9 +111,17 @@ class {{modelName}}Controller extends Controller
     {
         ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}->findOrFail($id);
 
+        $this->authorize('update', ${{modelNameSingularLowerCase}});
+
         ${{modelNameSingularLowerCase}}->update($request->all());
 
         ${{modelNameSingularLowerCase}}->refresh();
+
+        // log activity
+
+        activity()
+            ->performedOn(${{modelNameSingularLowerCase}})
+            ->log('UPDATE {{modelNameUpperCase}}' . ${{modelNameSingularLowerCase}}->id);
 
         return new {{modelName}}Resource(${{modelNameSingularLowerCase}}->load($this->getRelationship()));
     }
@@ -112,7 +136,15 @@ class {{modelName}}Controller extends Controller
     {
         ${{modelNameSingularLowerCase}} = $this->{{modelNameSingularLowerCase}}->findOrFail($id);
 
+        $this->authorize('delete', ${{modelNameSingularLowerCase}});
+
         ${{modelNameSingularLowerCase}}->delete();
+
+        // log activity
+
+        activity()
+            ->performedOn(${{modelNameSingularLowerCase}})
+            ->log('DELETE {{modelNameUpperCase}}' . ${{modelNameSingularLowerCase}}->id);
 
         return response(null, 204);
     }
@@ -125,6 +157,8 @@ class {{modelName}}Controller extends Controller
      */
     public function indexData(Request $request, {{modelName}}Filter $filter)
     {
+        $this->authorize('index', {{modelName}}::class);
+
         ${{modelNamePluralLowerCase}} = $this->get{{modelName}}Details($filter);
 
         return new {{modelName}}Resource(${{modelNamePluralLowerCase}});
@@ -138,6 +172,8 @@ class {{modelName}}Controller extends Controller
      */
     public function printIndex(Request $request, {{modelName}}Filter $filter)
     {
+        $this->authorize('index', {{modelName}}::class);
+
         ${{modelNamePluralLowerCase}} = $this->get{{modelName}}Details($filter);
 
         return view('aset.{{modelNamePluralLowerCase}}.print', compact('{{modelNamePluralLowerCase}}'));
@@ -151,6 +187,8 @@ class {{modelName}}Controller extends Controller
      */
     public function pdfIndex(Request $request, {{modelName}}Filter $filter)
     {
+        $this->authorize('index', {{modelName}}::class);
+
         ${{modelNamePluralLowerCase}} = $this->get{{modelName}}Details($filter);
 
         $filename = '{{modelName}}_List_' . date('YmdHi') .'.pdf';

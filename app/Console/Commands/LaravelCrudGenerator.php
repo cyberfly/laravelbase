@@ -383,6 +383,7 @@ class LaravelCrudGenerator extends Command
         $template = str_replace(
             [
                 '{{modelName}}',
+                '{{modelNameUpperCase}}',
                 '{{modelNamePlural}}',
                 '{{modelNamePluralLowerCase}}',
                 '{{modelNameSingularLowerCase}}',
@@ -392,6 +393,7 @@ class LaravelCrudGenerator extends Command
             ],
             [
                 $name,
+                strtoupper($name),
                 str_plural($name),
                 strtolower(str_plural($name)),
                 strtolower($name),
