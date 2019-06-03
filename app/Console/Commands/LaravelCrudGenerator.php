@@ -36,6 +36,13 @@ class LaravelCrudGenerator extends Command
     protected $route_file = 'web.php';
 
     /**
+     * The default breadcrumb route file
+     *
+     * @var string
+     */
+    protected $breadcrumb_route_file = 'breadcrumbs.php';
+
+    /**
      * The default namespace application route
      *
      * @var string
@@ -77,6 +84,8 @@ class LaravelCrudGenerator extends Command
         $this->generateVueComponent($name);
 
         $this->writeRoute($name);
+        $this->writeBreadcrumb($name);
+        $this->writeAppJs($name);
     }
 
     protected function getStub($type)
@@ -295,6 +304,32 @@ class LaravelCrudGenerator extends Command
         $this->info("$filePath updated");
     }
 
+    protected function writeBreadcrumb($name)
+    {
+        $breadcrumbs = $this->getBreadcrumbs($name);
+
+        $filePath = base_path('routes/' . $this->getBreadcrumbFile());
+
+        File::append($filePath, $breadcrumbs);
+
+        $this->info("$filePath updated");
+    }
+
+    /**
+     * Register generated Vue components
+     * @param $name
+     */
+    protected function writeAppJs($name)
+    {
+        $componentRegisters = $this->getComponentRegisters($name);
+
+        $filePath = resource_path('assets/js/laravel/app.js');
+
+        File::append($filePath, $componentRegisters);
+
+        $this->info("$filePath updated");
+    }
+
     protected function getTemplate($name, $stub)
     {
         $template = str_replace(
@@ -329,9 +364,65 @@ class LaravelCrudGenerator extends Command
     protected function getRoutes($name)
     {
         $routes = '
-        Route::resource(\'' . str_plural(strtolower($name)) . "', '{$name}Controller');";
+            // generated ' . str_plural(strtolower($name)) . ' routes
+
+            Route::get(\'' . str_plural(strtolower($name)) . '\', \'' . $name . 'Controller@index\')->name(\'' . str_plural(strtolower($name)) . '.index\');
+            Route::get(\'' . str_plural(strtolower($name)) . '/indexdata\', \'' . $name . 'Controller@indexData\')->name(\'' . str_plural(strtolower($name)) . '.indexdata\');
+            Route::get(\'' . str_plural(strtolower($name)) . '/create\', \'' . $name . 'Controller@create\')->name(\'' . str_plural(strtolower($name)) . '.create\');
+            Route::get(\'' . str_plural(strtolower($name)) . '/{' . strtolower($name) . '_id}\', \'' . $name . 'Controller@show\')->name(\'' . str_plural(strtolower($name)) . '.show\');
+            Route::get(\'' . str_plural(strtolower($name)) . '/{' . strtolower($name) . '_id}/edit\', \'' . $name . 'Controller@edit\')->name(\'' . str_plural(strtolower($name)) . '.edit\');
+
+            Route::post(\'' . str_plural(strtolower($name)) . '\', \'' . $name . 'Controller@store\')->name(\'' . str_plural(strtolower($name)) . '.store\');
+
+            Route::put(\'' . str_plural(strtolower($name)) . '/{' . strtolower($name) . '_id}\', \'' . $name . 'Controller@update\')->name(\'' . str_plural(strtolower($name)) . '.update\');
+
+            Route::delete(\'' . str_plural(strtolower($name)) . '/{' . strtolower($name) . '_id}\', \'' . $name . 'Controller@destroy\')->name(\'' . str_plural(strtolower($name)) . '.destroy\');
+        ';
 
         return $routes;
+    }
+
+    protected function getBreadcrumbs($name)
+    {
+        $breadcrumbs= '
+// generated ' . str_plural(strtolower($name)) . ' breadcrumbs
+
+Breadcrumbs::for(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.index\', function ($trail) {
+    $trail->parent(\'' . $this->getRouteNamespace() . '.dashboard\');
+    $trail->push(\'' . $name . ' List\', route(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.index\'));
+});
+
+Breadcrumbs::for(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.create\', function ($trail) {
+    $trail->parent(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.index\');
+    $trail->push(\'Create ' . $name . '\', route(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.create\'));
+});
+
+Breadcrumbs::for(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.edit\', function ($trail, $location_id) {
+    $trail->parent(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.index\');
+    $trail->push(\'Edit ' . $name . '\', route(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.edit\', $location_id));
+});
+
+Breadcrumbs::for(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.show\', function ($trail, $location_id) {
+    $trail->parent(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.index\');
+    $trail->push(\'Show ' . $name . '\', route(\'' . $this->getRouteNamespace() . '.' . str_plural(strtolower($name)) . '.show\', $location_id));
+});
+        ';
+
+        return $breadcrumbs;
+    }
+
+    protected function getComponentRegisters($name)
+    {
+        $componentRegisters = '
+// generated ' . str_plural(strtolower($name)) . ' components
+
+Vue.component(\'index-' . strtolower($name) . '-component\', require(\'../../../components/' . $this->getViewNamespace() . '/' . str_plural(strtolower($name)) . '/Index' . $name . 'Component.vue\'));
+Vue.component(\'create-' . strtolower($name) . '-component\', require(\'../../../components/' . $this->getViewNamespace() . '/' . str_plural(strtolower($name)) . '/Create' . $name . 'Component.vue\'));
+Vue.component(\'edit-' . strtolower($name) . '-component\', require(\'../../../components/' . $this->getViewNamespace() . '/' . str_plural(strtolower($name)) . '/Edit' . $name . 'Component.vue\'));
+Vue.component(\'show-' . strtolower($name) . '-component\', require(\'../../../components/' . $this->getViewNamespace() . '/' . str_plural(strtolower($name)) . '/Show' . $name . 'Component.vue\'));
+        ';
+
+        return $componentRegisters;
     }
 
     protected function getNamespace()
@@ -342,6 +433,11 @@ class LaravelCrudGenerator extends Command
     protected function getRouteFile()
     {
         return $this->route_file;
+    }
+
+    protected function getBreadcrumbFile()
+    {
+        return $this->breadcrumb_route_file;
     }
 
     protected function getRouteNamespace()
