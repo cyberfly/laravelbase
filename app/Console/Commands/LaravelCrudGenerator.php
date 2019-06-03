@@ -164,6 +164,7 @@ class LaravelCrudGenerator extends Command
         $this->writeIndexBlade($name);
         $this->writeCreateBlade($name);
         $this->writeEditBlade($name);
+        $this->writeShowBlade($name);
     }
 
     protected function generateVueComponent($name)
@@ -171,6 +172,7 @@ class LaravelCrudGenerator extends Command
         $this->writeIndexComponent($name);
         $this->writeCreateComponent($name);
         $this->writeEditComponent($name);
+        $this->writeShowComponent($name);
     }
 
     protected function writeStoreRequest($name)
@@ -248,6 +250,21 @@ class LaravelCrudGenerator extends Command
         $this->info("$filePath generated");
     }
 
+    protected function writeShowBlade($name)
+    {
+        $bladeTemplate = $this->getTemplate($name, 'ShowBlade');
+
+        $folderPath = resource_path('views/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)));
+
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/show.blade.php";
+
+        file_put_contents($filePath, $bladeTemplate);
+
+        $this->info("$filePath generated");
+    }
+
     protected function writeIndexComponent($name)
     {
         $vueTemplate = $this->getTemplate($name, 'IndexComponentVue');
@@ -287,6 +304,21 @@ class LaravelCrudGenerator extends Command
         $this->makeDirIfNotExist($folderPath);
 
         $filePath = $folderPath . "/Edit{$name}Component.vue";
+
+        file_put_contents($filePath, $vueTemplate);
+
+        $this->info("$filePath generated");
+    }
+
+    protected function writeShowComponent($name)
+    {
+        $vueTemplate = $this->getTemplate($name, 'ShowComponentVue');
+
+        $folderPath = resource_path('components/' . $this->getViewNamespace() . '/' . strtolower(str_plural($name)));
+
+        $this->makeDirIfNotExist($folderPath);
+
+        $filePath = $folderPath . "/Show{$name}Component.vue";
 
         file_put_contents($filePath, $vueTemplate);
 

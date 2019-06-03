@@ -1,0 +1,55 @@
+<template>
+
+    <!-- Div -->
+
+    <div>
+
+        <div class="form-row">
+            <div class="form-group col-lg-6">
+                <v-text
+                    v-model="{{modelNameSingularLowerCase}}_data.title"
+                    :field_name="'title'"
+                    :label="'Title'"
+                    :rules="'required'"
+                    :transform="'uppercase'"
+                    :readonly="true"
+                ></v-text>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- End Div -->
+
+</template>
+
+<script>
+
+    export default {
+        props: {
+            {{modelNameSingularLowerCase}}: {
+                required: true
+            },
+        },
+        mounted () {
+
+        },
+        created () {
+
+        },
+        computed: {
+
+        },
+        data () {
+            return {
+                {{modelNameSingularLowerCase}}_data: {
+                    ...this.{{modelNameSingularLowerCase}},
+                },
+                submitted: false,
+            }
+        },
+        methods: {
+
+        }
+    }
+</script>
