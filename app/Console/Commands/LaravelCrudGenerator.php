@@ -371,6 +371,7 @@ class LaravelCrudGenerator extends Command
                 '{{modelNamePluralLowerCase}}',
                 '{{modelNameSingularLowerCase}}',
                 '{{routeNamespace}}',
+                '{{viewNamespace}}',
                 '{{namespace}}',
             ],
             [
@@ -379,6 +380,7 @@ class LaravelCrudGenerator extends Command
                 strtolower(str_plural($name)),
                 strtolower($name),
                 $this->getRouteNamespace(),
+                $this->getViewNamespace(),
                 $this->getNamespace()
             ],
             $this->getStub($stub)
