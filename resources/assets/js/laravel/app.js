@@ -167,6 +167,9 @@ Vue.component('v-example-multiform-child', require('../../../components/examples
 Vue.component('v-example-invoice-parent', require('../../../components/examples/invoices/InvoiceParentComponent.vue'));
 Vue.component('v-example-invoice-child', require('../../../components/examples/invoices/InvoiceChildComponent.vue'));
 
+Vue.component('v-example-vueinvoice-parent', require('../../../components/examples/vueinvoices/VueInvoiceParentComponent.vue'));
+Vue.component('v-example-vueinvoice-child', require('../../../components/examples/vueinvoices/VueInvoiceChildComponent.vue'));
+
 Vue.component('v-example-upload-form', require('../../../components/examples/forms/UploadFormComponent.vue'));
 Vue.component('v-example-edit-upload-form', require('../../../components/examples/forms/EditUploadFormComponent.vue'));
 

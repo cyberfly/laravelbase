@@ -2,10 +2,15 @@
 
 namespace App\Models\Example;
 
+use App\Traits\Publishable;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\ModelStatus\HasStatuses;
 
 class Invoice extends Model
 {
+    use HasStatuses;
+    use Publishable;
+
     protected $table = 'example_invoices';
 
     protected $fillable = [

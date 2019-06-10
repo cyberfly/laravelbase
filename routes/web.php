@@ -98,6 +98,17 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('invoices/{invoice_id}', 'Example\InvoiceController@destroy')->name('invoices.destroy');
 
+        // VUE invoices example
+
+        Route::get('vueinvoices/create', 'Example\VueInvoiceController@create')->name('vueinvoices.create');
+        Route::get('vueinvoices/{invoice_id}/edit', 'Example\VueInvoiceController@edit')->name('vueinvoices.edit');
+
+        Route::post('vueinvoices', 'Example\VueInvoiceController@store')->name('vueinvoices.store');
+
+        Route::put('vueinvoices/{invoice_id}', 'Example\VueInvoiceController@update')->name('vueinvoices.update');
+
+        Route::delete('vueinvoices/{invoice_id}', 'Example\VueInvoiceController@destroy')->name('vueinvoices.destroy');
+
         // upload forms example
 
         Route::get('uploadforms/create', 'Example\UploadFormController@create')->name('uploadforms.create');
