@@ -175,11 +175,15 @@
 
             store() {
 
+                this.$showLoading();
+
                 console.log('submitting into API', this.finalInvoiceData);
 
                 axios
                     .post(route('examples.vueinvoices.store'), this.finalInvoiceData)
                     .then(response => {
+
+                        this.$hideLoading();
 
                         console.log('res -->', response.data.data);
 
@@ -201,11 +205,15 @@
 
             update() {
 
+                this.$showLoading();
+
                 console.log('submitting into API', this.finalInvoiceData);
 
                 axios
                     .put(route('examples.vueinvoices.update', this.invoice_data.id), this.finalInvoiceData)
                     .then(response => {
+
+                        this.$hideLoading();
 
                         console.log('res -->', response.data.data);
 
