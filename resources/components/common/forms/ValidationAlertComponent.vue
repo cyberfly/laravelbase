@@ -1,6 +1,6 @@
 <template>
     <transition name="fade">
-        <div v-if="submitted && errors.any()" class="alert alert-danger alert-dismissable" role="alert">
+        <div v-if="showValidationAlert && errors.any()" class="alert alert-danger alert-dismissable" role="alert">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -22,12 +22,30 @@
             submitted: {
                 default: false,
                 required: true
+            },
+            validate_on_submit: {
+                type: Boolean,
+                default: false
             }
         },
         mounted() {
 
         },
         computed: {
+
+            showValidationAlert() {
+
+                if (this.validate_on_submit) {
+
+                    if (!this.submitted) {
+                        return false;
+                    }
+
+                }
+
+                return true;
+
+            },
 
         },
         methods: {
