@@ -178,8 +178,7 @@ class VueInvoiceController extends Controller
     {
         if (!$id) {
 
-            $invoice = [
-                'id' => null,
+            $default_data = [
                 'customer_id' => null,
                 'invoice_number' => null,
                 'po_number' => null,
@@ -187,8 +186,11 @@ class VueInvoiceController extends Controller
                 'payment_due' => null,
                 'publish_status' => PublishStatus::DRAFT,
                 'published_at' => null,
-                'invoice_items' => [],
             ];
+
+            $invoice = $this->invoice
+                ->fill($default_data)
+                ->load('invoiceItems');
 
         }
         else {
