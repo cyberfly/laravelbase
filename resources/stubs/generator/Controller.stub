@@ -30,7 +30,7 @@ class {{modelName}}Controller extends Controller
     {
         $this->authorize('index', {{modelName}}::class);
 
-        return view('aset.{{modelNamePluralLowerCase}}.index');
+        return view('{{viewNamespace}}.{{modelNamePluralLowerCase}}.index');
     }
 
     /**
@@ -42,7 +42,7 @@ class {{modelName}}Controller extends Controller
     {
         $this->authorize('create', {{modelName}}::class);
 
-        return view('aset.{{modelNamePluralLowerCase}}.create');
+        return view('{{viewNamespace}}.{{modelNamePluralLowerCase}}.create');
     }
 
     /**
@@ -80,7 +80,7 @@ class {{modelName}}Controller extends Controller
 
         $this->authorize('show', ${{modelNameSingularLowerCase}});
 
-        return view('aset.{{modelNamePluralLowerCase}}.show', compact('{{modelNameSingularLowerCase}}'));
+        return view('{{viewNamespace}}.{{modelNamePluralLowerCase}}.show', compact('{{modelNameSingularLowerCase}}'));
     }
 
     /**
@@ -97,7 +97,7 @@ class {{modelName}}Controller extends Controller
 
         $this->authorize('update', ${{modelNameSingularLowerCase}});
 
-        return view('aset.{{modelNamePluralLowerCase}}.edit', compact('{{modelNameSingularLowerCase}}'));
+        return view('{{viewNamespace}}.{{modelNamePluralLowerCase}}.edit', compact('{{modelNameSingularLowerCase}}'));
     }
 
     /**
@@ -176,7 +176,7 @@ class {{modelName}}Controller extends Controller
 
         ${{modelNamePluralLowerCase}} = $this->get{{modelName}}Details($filter);
 
-        return view('aset.{{modelNamePluralLowerCase}}.print', compact('{{modelNamePluralLowerCase}}'));
+        return view('{{viewNamespace}}.{{modelNamePluralLowerCase}}.print', compact('{{modelNamePluralLowerCase}}'));
     }
 
     /**
@@ -193,7 +193,7 @@ class {{modelName}}Controller extends Controller
 
         $filename = '{{modelName}}_List_' . date('YmdHi') .'.pdf';
 
-        $pdf = \PDF::loadView('aset.{{modelNamePluralLowerCase}}.pdf', compact('{{modelNamePluralLowerCase}}'));
+        $pdf = \PDF::loadView('{{viewNamespace}}.{{modelNamePluralLowerCase}}.pdf', compact('{{modelNamePluralLowerCase}}'));
 
         return $pdf
             ->setPaper('a4', 'landscape')
