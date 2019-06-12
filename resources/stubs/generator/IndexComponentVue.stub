@@ -53,10 +53,10 @@
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a :href="$linkTo('{{routeNamespace}}.{{modelNamePluralLowerCase}}.edit', {{modelNameSingularLowerCase}}.id)" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Edit">
+                                    <a v-if="{{modelNameSingularLowerCase}}.can.update" :href="$linkTo('{{routeNamespace}}.{{modelNamePluralLowerCase}}.edit', {{modelNameSingularLowerCase}}.id)" class="btn btn-sm btn-primary" data-toggle="tooltip" title="Edit">
                                         <i class="fa fa-pencil-alt"></i>
                                     </a>
-                                    <button v-if="false" @click="$showDeleteForm({{modelNameSingularLowerCase}}.id, index)" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete">
+                                    <button v-if="{{modelNameSingularLowerCase}}.can.delete" @click="$showDeleteForm({{modelNameSingularLowerCase}}.id, index)" type="button" class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </div>
