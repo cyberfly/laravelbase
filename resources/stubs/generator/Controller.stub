@@ -153,7 +153,7 @@ class {{modelName}}Controller extends Controller
      * Data for index ajax request
      * @param Request $request
      * @param {{modelName}}Filter $filter
-     * @return {{modelName}}Resource
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function indexData(Request $request, {{modelName}}Filter $filter)
     {
@@ -161,7 +161,7 @@ class {{modelName}}Controller extends Controller
 
         ${{modelNamePluralLowerCase}} = $this->get{{modelName}}Details($filter);
 
-        return new {{modelName}}Resource(${{modelNamePluralLowerCase}});
+        return {{modelName}}Resource::collection(${{modelNamePluralLowerCase}});
     }
 
     /**
