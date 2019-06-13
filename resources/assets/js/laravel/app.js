@@ -78,7 +78,7 @@ Vue.component('loading', loading);
 
 import { VclTable } from 'vue-content-loading';
 
-Vue.component('v-table-loader', VclTable);
+Vue.component('vcl-table', VclTable);
 
 /**
  * The following block of code may be used to automatically register your
@@ -138,6 +138,7 @@ Vue.component('v-media-widget', require('../../../components/common/widgets/Medi
 Vue.component('v-media-light-widget', require('../../../components/common/widgets/MediaLightWidgetComponent.vue'));
 Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.component('v-ajax-loading', require('../../../components/common/loaders/AjaxLoadingComponent.vue'));
+Vue.component('v-table-loader', require('../../../components/common/loaders/TableLoadingComponent.vue'));
 
 Vue.component('v-html-list', require('../../../components/common/lists/HtmlListComponent.vue'));
 Vue.component('v-index-notification', require('../../../components/common/notifications/IndexNotificationComponent.vue'));
