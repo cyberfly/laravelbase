@@ -127,6 +127,7 @@ Vue.component('v-upload', require('../../../components/common/forms/UploadInputC
 Vue.component('v-money', require('../../../components/common/forms/MoneyInputComponent.vue'));
 Vue.component('v-year', require('../../../components/common/forms/YearInputComponent.vue'));
 Vue.component('v-month', require('../../../components/common/forms/MonthInputComponent.vue'));
+Vue.component('v-search-modal', require('../../../components/common/forms/InputSearchModalComponent.vue'));
 
 Vue.component('v-validation-alert', require('../../../components/common/forms/ValidationAlertComponent.vue'));
 Vue.component('v-parent-validation-alert', require('../../../components/common/forms/ParentValidationAlertComponent.vue'));
