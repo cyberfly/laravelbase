@@ -8,6 +8,7 @@ return [
     'next'     => 'Next',
     'previous' => 'Previous',
     'select'   => 'Select',
+    'search'   => 'Search',
 
     // auth label
 
@@ -43,4 +44,5 @@ return [
     'list' => 'List',
     'detail' => 'Detail',
     'date' => 'Date',
+    'keyword' => 'Keyword',
 ];

@@ -8,6 +8,7 @@ return [
     'next'     => 'Seterusnya',
     'previous' => 'Kembali',
     'select'   => 'Pilih',
+    'search'   => 'Carian',
 
     // auth label
 
@@ -43,4 +44,5 @@ return [
     'list' => 'Senarai',
     'detail' => 'Butiran',
     'date' => 'Tarikh',
+    'keyword' => 'Kata Kunci',
 ];
