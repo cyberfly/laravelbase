@@ -5,6 +5,7 @@
         <div class="input-group">
 
             <input type="text"
+                   :name="field_name"
                    v-model="selected_display_value"
                    v-validate="getValidationRules()"
                    :data-vv-as="label"
