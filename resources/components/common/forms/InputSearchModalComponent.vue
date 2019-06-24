@@ -265,7 +265,14 @@
                 this.selected_data = data;
 
                 if (this.value_type === 'key') {
-                    this.selected_display_value = data[this.value_key];
+
+                    if (this.display_key) {
+                        this.selected_display_value = data[this.display_key];
+                    }
+                    else {
+                        this.selected_display_value = data[this.value_key];
+                    }
+
                 }
                 else {
                     this.selected_display_value = data[this.display_key];
