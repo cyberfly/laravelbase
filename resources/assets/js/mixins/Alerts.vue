@@ -52,7 +52,9 @@
 
             // show success deleted alert
 
-            $showSuccessDeleted(label) {
+            $showSuccessDeleted(label, redirect_to = null) {
+
+                const self = this;
 
                 this.$swal({
                     title: 'Deleted',
@@ -62,6 +64,12 @@
                     timer: 2000,
                 }).then(function() {
 
+                    if (redirect_to) {
+
+                        self.$showLoading();
+
+                        window.location.href = redirect_to;
+                    }
 
                 });
             },
