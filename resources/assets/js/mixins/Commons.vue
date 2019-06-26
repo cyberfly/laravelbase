@@ -32,6 +32,12 @@
                 return time_ago;
             },
 
+            // today date (db format)
+
+            $today() {
+                return moment(new Date()).format('YYYY-MM-DD');
+            },
+
             // reset form
 
             $resetForm(obj) {
