@@ -105,6 +105,10 @@
 
             readonly_date() {
 
+                if (!this.value) {
+                    return null;
+                }
+
                 let date_obj = flatpickr.parseDate(this.value, this.input_format);
 
                 return flatpickr.formatDate(date_obj, this.format);
