@@ -38,6 +38,8 @@ if (! function_exists('my_datetime')) {
 if (! function_exists('my_money')) {
     function my_money($amount)
     {
+        $amount = (float)$amount;
+
         return money($amount, 'MYR', true);
     }
 }
