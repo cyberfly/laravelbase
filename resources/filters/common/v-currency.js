@@ -5,9 +5,15 @@ import Vue from 'vue';
 Vue.filter('toMyCurrency', function (value) {
 
     if (typeof value !== "number") {
-        value = parseFloat(value);
-        // return value;
+
+        if (value) {
+            value = parseFloat(value);
+        }
+        else {
+            value = parseFloat(0);
+        }
     }
+
     var formatter = new Intl.NumberFormat('ms-Latn-MY', {
         style: 'currency',
         currency: 'MYR',
