@@ -5,6 +5,7 @@ return [
     'save'     => 'Simpan',
     'cancel'   => 'Batal',
     'reset'    => 'Padam',
+    'close'    => 'Tutup',
     'next'     => 'Seterusnya',
     'previous' => 'Kembali',
     'select'   => 'Pilih',

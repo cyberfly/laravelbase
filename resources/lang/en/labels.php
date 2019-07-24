@@ -5,6 +5,7 @@ return [
     'save'     => 'Save',
     'cancel'   => 'Cancel',
     'reset'    => 'Reset',
+    'close'    => 'Close',
     'next'     => 'Next',
     'previous' => 'Previous',
     'select'   => 'Select',
