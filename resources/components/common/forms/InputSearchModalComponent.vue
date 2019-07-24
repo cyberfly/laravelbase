@@ -99,7 +99,7 @@
                 </div>
             </div>
             <div slot="modal-footer">
-                <button @click="hideModal()" type="button" class="btn btn-sm btn-primary">Close</button>
+                <button @click="hideModal()" type="button" class="btn btn-sm btn-primary">{{ trans.get('labels.close') }}</button>
             </div>
         </b-modal>
 
@@ -241,6 +241,10 @@
 
         },
         watch:{
+
+            display_value: function (value, old_value) {
+                this.selected_display_value = value;
+            },
 
         },
         methods: {

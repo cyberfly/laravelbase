@@ -36,7 +36,9 @@
             value: {},
             label: {
                 type: String,
-                default: 'Keyword'
+                default: function () {
+                    return this.trans.get('labels.keyword');
+                }
             },
             placeholder: {
                 type: String,
