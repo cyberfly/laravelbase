@@ -5,6 +5,7 @@
  */
 
 use Illuminate\Support\Carbon;
+use NumberToWords\NumberToWords;
 
 if (! function_exists('carbon')) {
     function carbon($parseString = null, $tz = null)
@@ -41,6 +42,42 @@ if (! function_exists('my_money')) {
         $amount = (float)$amount;
 
         return money($amount, 'MYR', true);
+    }
+}
+
+if (! function_exists('my_money_word')) {
+    function my_money_word($amount, $uppercase = true)
+    {
+        $numberToWords = new NumberToWords();
+
+        $numberTransformer = $numberToWords->getNumberTransformer('ms');
+
+        $amount_breakdown = explode(".", $amount);
+
+        $ringgit = $amount_breakdown[0];
+
+        $sen = isset($amount_breakdown[1]) ? $amount_breakdown[1] : '00';
+
+        if ($sen !== '00') {
+
+            if ($uppercase) {
+                $amount_word = strtoupper($numberTransformer->toWords($ringgit)) . strtoupper(' ringgit ') . strtoupper($numberTransformer->toWords($sen)) . strtoupper(' sen sahaja');
+            }
+            else {
+                $amount_word = ucwords($numberTransformer->toWords($ringgit)) . ' ringgit ' . ucwords($numberTransformer->toWords($sen)) . ' sen sahaja';
+            }
+
+        } else {
+
+            if ($uppercase) {
+                $amount_word = strtoupper($numberTransformer->toWords($ringgit)) . strtoupper(' ringgit sahaja');
+            }
+            else {
+                $amount_word = ucwords($numberTransformer->toWords($ringgit)) . ' ringgit sahaja';
+            }
+        }
+
+        return $amount_word;
     }
 }
 
