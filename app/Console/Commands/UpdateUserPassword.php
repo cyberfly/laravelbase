@@ -13,7 +13,7 @@ class UpdateUserPassword extends Command
      *
      * @var string
      */
-    protected $signature = 'base:update-user-password';
+    protected $signature = 'base:update-password';
 
     /**
      * The console command description.
@@ -41,30 +41,45 @@ class UpdateUserPassword extends Command
     {
         $default_index = 0;
 
-        $find_by = $this->choice('Find user by?', ['id', 'email'], $default_index);
+        $find_by = $this->choice('Find user by?', ['id', 'email', 'all'], $default_index);
 
-        $find_value = $this->ask('Find user value?');
+        if ($find_by !== 'all') {
 
-        if (empty($find_value)) {
-            $this->error('Please enter value!');
-            exit;
+            $find_value = $this->ask('Find user value?');
+
+            if (empty($find_value)) {
+                $this->error('Please enter value!');
+                exit;
+            }
+
+            $user = User::where($find_by, $find_value)->first();
+
+            if ($user) {
+                $new_password = $this->ask('New password? (default 123)', 123);
+
+                $data = [
+                    'password' => Hash::make($new_password),
+                ];
+
+                $user->update($data);
+
+                $this->info("$user->email password updated! Password: $new_password");
+            }
+            else {
+                $this->error('User not exist');
+            }
         }
+        else {
 
-        $user = User::where($find_by, $find_value)->first();
-
-        if ($user) {
             $new_password = $this->ask('New password? (default 123)', 123);
 
             $data = [
                 'password' => Hash::make($new_password),
             ];
 
-            $user->update($data);
+            User::query()->update($data);
 
-            $this->info("$user->email password updated! Password: $new_password");
-        }
-        else {
-            $this->error('User not exist');
+            $this->info("All users password updated! Password: $new_password");
         }
     }
 }
