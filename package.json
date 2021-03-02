@@ -31,7 +31,7 @@
         "laravel-vue-pagination": "^2.3.0",
         "moment": "^2.24.0",
         "simplebar": "^2.6.1",
-        "urijs": "^1.19.1",
+        "urijs": "^1.19.6",
         "vee-validate": "^2.1.5",
         "vue-autonumeric": "^1.2.6",
         "vue-content-loading": "^1.6.0",
